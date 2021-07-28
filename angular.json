@@ -27,9 +27,17 @@
               "src/assets"
             ],
             "styles": [
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "./node_modules/bootstrap-4-theme/dist/bootstrap-theme.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/solid.min.css",
+              "./node_modules/@fortawesome/fontawesome-free/css/fontawesome.min.css",
               "src/styles.css"
             ],
-            "scripts": [],
+            "scripts": [
+              "./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js",
+              "./node_modules/@fortawesome/fontawesome-free/js/solid.min.js",
+              "./node_modules/@fortawesome/fontawesome-free/js/fontawesome.min.js"
+            ],
             "aot": true
           },
           "configurations": {
@@ -37,8 +45,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "3mb"
                 },
                 {
                   "type": "anyComponentStyle",

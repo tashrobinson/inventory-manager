@@ -12,10 +12,14 @@ import { HttpClient } from '@angular/common/http';
 export class ProductCreateComponent implements OnInit {
 
   product: any = {};
+  suppliers: any;
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.http.get('/supplier').subscribe(data => {
+      this.suppliers = data;
+    });
   }
 
   saveProduct() {

@@ -14,7 +14,8 @@ var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/inventory-manager', {
       promiseLibrary: require('bluebird'),
-      useNewUrlParser: true  })
+      useNewUrlParser: true,
+      useUnifiedTopology: true})
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
 

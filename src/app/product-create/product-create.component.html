@@ -9,12 +9,11 @@
         </div>
         <div class="form-group">
           <label for="supplierId">Supplier Id</label>
-
-          <!--
-              TODO Need to select supplier from a dropdown list
-              Will need a method to grab all the suppliers and populate the list
-          -->
-          <input type="text" class="form-control" [(ngModel)]="product.supplierId" name="supplierId" id="supplierId" required>
+          <div>
+            <select class="form-select" name="supplierId" id="supplierId" [(ngModel)]="product.supplierId" required>
+              <option *ngFor="let supplier of suppliers" [ngValue]="supplier.id">{{supplier.id}}</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="name">Product Name</label>
@@ -32,6 +31,7 @@
           <label for="qty">Quantity</label>
           <input type="number" class="form-control" [(ngModel)]="product.qty" name="qty" id="qty" required>
         </div>
+        <br />
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Save</button>
           <a [routerLink]="['/productlist']" class="btn btn-info" >Cancel</a>

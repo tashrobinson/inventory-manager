@@ -1,11 +1,8 @@
 <div class="container">
-  <a [routerLink]="['/productlist']" class="btn btn-default btn-lg">Products</a>
-  <a [routerLink]="['/supplierlist']" class="btn btn-default btn-lg">Suppliers</a>
-  <a [routerLink]="['/shelflist']" class="btn btn-default btn-lg">Shelves</a>
-  <a [routerLink]="['/userlist']" class="btn btn-default btn-lg">Users</a>
+  <app-nav-bar></app-nav-bar>
   <h1>Shelf List
-    <a [routerLink]="['/shelf-create']" class="btn btn-default btn-lg">
-      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    <a [routerLink]="['/shelf-create']" class="btn btn-light btn-lg">
+      <span class="fas fa-plus" aria-hidden="true"></span>
     </a></h1>
   <input type="text" class="form-control" [(ngModel)]="searchtext"
          placeholder="Search">

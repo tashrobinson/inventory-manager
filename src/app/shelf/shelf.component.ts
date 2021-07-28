@@ -11,12 +11,16 @@ export class ShelfComponent implements OnInit {
 
   searchtext: string;
   shelves: any;
+  products: any;
 
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
     this.http.get('/shelf').subscribe(data => {
       this.shelves = data;
+    });
+    this.http.get('/product').subscribe(data => {
+      this.products = data;
     });
 
   }

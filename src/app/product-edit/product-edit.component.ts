@@ -11,12 +11,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductEditComponent implements OnInit {
 
+  suppliers: any;
   product: any = {};
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getProduct(this.route.snapshot.params['id']);
+
+    this.http.get('/supplier').subscribe(data => {
+      this.suppliers = data;
+    });
+
   }
 
   getProduct(id) {

@@ -8,6 +8,7 @@
     <dt>Update Date</dt>
     <dd>{{ supplier.updated_date | date:'short' }}</dd>
   </dl>
+  <br />
   <div class="row">
     <div class="col-md-12">
       <a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a>

@@ -11,6 +11,7 @@
           <label for="name">Supplier Name</label>
           <input type="text" class="form-control" [(ngModel)]="supplier.name" name="name" id="name" required>
         </div>
+        <br />
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!supplierForm.form.valid">Update</button>
           <a [routerLink]="['/supplierlist']" class="btn btn-info">Cancel</a>

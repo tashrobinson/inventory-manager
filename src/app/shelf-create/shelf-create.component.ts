@@ -10,11 +10,15 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShelfCreateComponent implements OnInit {
 
+  products: any;
   shelf: any = {};
 
   constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
+    this.http.get('/product').subscribe(data => {
+      this.products = data;
+    });
   }
 
   saveShelf() {

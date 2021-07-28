@@ -12,6 +12,7 @@
     <dt>Update Date</dt>
     <dd>{{ shelf.updated_date | date:'short' }}</dd>
   </dl>
+  <br />
   <div class="row">
     <div class="col-md-12">
       <a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a>

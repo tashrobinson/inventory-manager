@@ -8,8 +8,13 @@
           <input type="text" class="form-control" [(ngModel)]="shelf.id" name="id" id="id" required>
         </div>
         <div class="form-group">
-          <label for="productId">Product ID</label>
-          <input type="text" class="form-control" [(ngModel)]="shelf.productId" name="productId" id="productId" required>
+          <label for="productId">Product Id</label>
+          <div>
+            <select class="form-select" name="productId" id="productId" [(ngModel)]="shelf.productId" required>
+              <option value="empty">empty</option>
+              <option *ngFor="let product of products" [ngValue]="product.id">{{product.id + " - " + product.name }}</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="location">Location</label>
@@ -19,6 +24,7 @@
           <label for="status">Status</label>
           <input type="text" class="form-control" [(ngModel)]="shelf.status" name="status" id="status" required>
         </div>
+        <br />
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!shelfForm.form.valid">Update</button>
           <a [routerLink]="['/shelflist']" class="btn btn-info btn-lg">Cancel</a>

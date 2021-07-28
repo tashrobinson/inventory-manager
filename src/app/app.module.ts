@@ -26,6 +26,7 @@ import { MatchPasswordDirective } from './directives/match-password.directive';
 import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 import { VerifyPasswordDirective } from './directives/verify-password.directive';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { NavBarComponent } from './nav-bar/nav-bar.component';
 
 const appRoutes: Routes = [
   {
@@ -157,7 +158,8 @@ const appRoutes: Routes = [
     PasswordPatternDirective,
     MatchPasswordDirective,
     ValidateUserNameDirective,
-    VerifyPasswordDirective
+    VerifyPasswordDirective,
+    NavBarComponent
   ],
     imports: [
         BrowserModule,

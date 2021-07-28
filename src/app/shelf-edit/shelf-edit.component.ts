@@ -11,12 +11,17 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShelfEditComponent implements OnInit {
 
+  products: any;
   shelf: any = {};
 
   constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.getShelf(this.route.snapshot.params['id']);
+
+    this.http.get('/product').subscribe(data => {
+      this.products = data;
+    });
   }
 
   getShelf(id) {

@@ -8,8 +8,12 @@
           <input type="text" class="form-control" [(ngModel)]="product.id" name="id" id="id" required>
         </div>
         <div class="form-group">
-          <label for="supplierId">Supplier ID</label>
-          <input type="text" class="form-control" [(ngModel)]="product.supplierId" name="supplierId" id="supplierId" required>
+          <label for="supplierId">Supplier Id</label>
+          <div>
+            <select class="form-select" name="supplierId" id="supplierId" [(ngModel)]="product.supplierId" required>
+              <option *ngFor="let supplier of suppliers" [ngValue]="supplier.id">{{supplier.id}}</option>
+            </select>
+          </div>
         </div>
         <div class="form-group">
           <label for="name">Name</label>
@@ -27,6 +31,7 @@
           <label for="qty">Price</label>
           <input type="number" class="form-control" [(ngModel)]="product.qty" name="qty" id="qty" required>
         </div>
+        <br />
         <div class="form-group">
           <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Update</button>
           <a [routerLink]="['/productlist']" class="btn btn-info">Cancel</a>
