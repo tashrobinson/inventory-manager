@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>{{ product.name }}</h1>
+  <dl class="list">
+    <dt>ID</dt>
+    <dd>{{ product.id }}</dd>
+    <dt>Supplier ID</dt>
+    <dd>{{ product.supplierId }}</dd>
+    <dt>Name</dt>
+    <dd>{{ product.name }}</dd>
+    <dt>Part</dt>
+    <dd>{{ product.part }}</dd>
+    <dt>Price</dt>
+    <dd>{{ product.price | currency }}</dd>
+    <dt>Quantity</dt>
+    <dd>{{ product.qty }}</dd>
+    <dt>Update Date</dt>
+    <dd>{{ product.updated_date | date:'short' }}</dd>
+  </dl>
+  <div class="row">
+    <div class="col-md-12">
+      <a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a>
+      <button class="btn btn-danger" type="button" (click)="deleteProduct(product._id)">Delete</button>
+      <a [routerLink]="['/productlist']" class="btn btn-info" >Cancel</a>
+    </div>
+  </div>
+
+</div>

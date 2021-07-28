@@ -1,0 +1,37 @@
+<div class="container">
+  <h1>Add New Shelf</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="saveShelf()" #shelfForm="ngForm">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" [(ngModel)]="shelf.id" name="id" id="id" required>
+        </div>
+        <div class="form-group">
+          <label for="productId">Product ID</label>
+          <!--
+              TODO Need to select product from a dropdown list
+              Will need a method to grab all the products and populate the list
+          -->
+
+          <input type="text" class="form-control" [(ngModel)]="shelf.productId" name="productId" id="productId" required>
+        </div>
+        <div class="form-group">
+          <label for="location">Location</label>
+          <input type="text" class="form-control" [(ngModel)]="shelf.location" name="location" id="location" required>
+        </div>
+        <div class="form-group">
+          <label for="status">Status</label>
+          <!-- TODO do we need a list of statuses to choose from? -->
+
+          <input type="text" class="form-control" [(ngModel)]="shelf.status" name="status" id="status" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="!shelfForm.form.valid">Save</button>
+          <a [routerLink]="['/shelflist']" class="btn btn-info" >Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

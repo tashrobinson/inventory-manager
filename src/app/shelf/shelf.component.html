@@ -1,0 +1,36 @@
+<div class="container">
+  <a [routerLink]="['/productlist']" class="btn btn-default btn-lg">Products</a>
+  <a [routerLink]="['/supplierlist']" class="btn btn-default btn-lg">Suppliers</a>
+  <a [routerLink]="['/shelflist']" class="btn btn-default btn-lg">Shelves</a>
+  <a [routerLink]="['/userlist']" class="btn btn-default btn-lg">Users</a>
+  <h1>Shelf List
+    <a [routerLink]="['/shelf-create']" class="btn btn-default btn-lg">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </a></h1>
+  <input type="text" class="form-control" [(ngModel)]="searchtext"
+         placeholder="Search">
+  <table class="table">
+    <thead>
+    <tr>
+      <th>ID</th>
+      <th>Product ID</th>
+      <th>Location</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let shelf of shelves | filter:searchtext">
+      <td>{{ shelf.id }}</td>
+      <td>{{ shelf.productId }}</td>
+      <td>{{ shelf.location }}</td>
+      <td>{{ shelf.status }}</td>
+      <td>
+        <a [routerLink]="['/shelf-details', shelf._id]" class="btn btn-info">Show Detail</a>
+        <a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a>
+        <a [routerLink]="['/shelf-details/delete', shelf._id]" class="btn btn-danger">Delete</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+  <h1>Add New Product</h1>
+  <div class="row">
+    <div class="col-md-6">
+      <form (ngSubmit)="saveProduct()" #productForm="ngForm">
+        <div class="form-group">
+          <label for="id">ID</label>
+          <input type="text" class="form-control" [(ngModel)]="product.id" name="id" id="id" required>
+        </div>
+        <div class="form-group">
+          <label for="supplierId">Supplier Id</label>
+
+          <!--
+              TODO Need to select supplier from a dropdown list
+              Will need a method to grab all the suppliers and populate the list
+          -->
+          <input type="text" class="form-control" [(ngModel)]="product.supplierId" name="supplierId" id="supplierId" required>
+        </div>
+        <div class="form-group">
+          <label for="name">Product Name</label>
+          <input type="text" class="form-control" [(ngModel)]="product.name" name="name" id="name" required>
+        </div>
+        <div class="form-group">
+          <label for="part">Part Number</label>
+          <input type="text" class="form-control" [(ngModel)]="product.part" name="part" id="part" required>
+        </div>
+        <div class="form-group">
+          <label for="price">Price $</label>
+          <input type="number" step="0.01" class="form-control" [(ngModel)]="product.price" name="price" id="price" required>
+        </div>
+        <div class="form-group">
+          <label for="qty">Quantity</label>
+          <input type="number" class="form-control" [(ngModel)]="product.qty" name="qty" id="qty" required>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Save</button>
+          <a [routerLink]="['/productlist']" class="btn btn-info" >Cancel</a>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+

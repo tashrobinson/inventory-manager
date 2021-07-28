@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>{{ user.username }}</h1>
+  <dl class="list">
+    <dt>Username</dt>
+    <dd>{{ user.username }}</dd>
+    <dt>Email address</dt>
+    <dd>{{ user.email }}</dd>
+    <dt>Is Admin?</dt>
+    <dd>{{ user.isAdmin }}</dd>
+  </dl>
+  <div class="row">
+    <div class="col-md-12">
+      <a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a>
+      <button class="btn btn-danger" type="button" (click)="deleteUser(user._id)">Delete</button>
+      <a [routerLink]="['/userlist']" class="btn btn-info" >Cancel</a>
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>{{ shelf.location }}</h1>
+  <dl class="list">
+    <dt>ID</dt>
+    <dd>{{ shelf.id }}</dd>
+    <dt>Product ID</dt>
+    <dd>{{ shelf.productId }}</dd>
+    <dt>Location</dt>
+    <dd>{{ shelf.location }}</dd>
+    <dt>Status</dt>
+    <dd>{{ shelf.status }}</dd>
+    <dt>Update Date</dt>
+    <dd>{{ shelf.updated_date | date:'short' }}</dd>
+  </dl>
+  <div class="row">
+    <div class="col-md-12">
+      <a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a>
+      <button class="btn btn-danger" type="button" (click)="deleteShelf(shelf._id)">Delete</button>
+      <a [routerLink]="['/shelflist']" class="btn btn-info">Cancel</a>
+    </div>
+  </div>
+</div>

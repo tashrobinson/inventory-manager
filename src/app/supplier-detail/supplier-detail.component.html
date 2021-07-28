@@ -1,0 +1,18 @@
+<div class="container">
+  <h1>{{ supplier.name }}</h1>
+  <dl class="list">
+    <dt>ID</dt>
+    <dd>{{ supplier.id }}</dd>
+    <dt>Name</dt>
+    <dd>{{ supplier.name }}</dd>
+    <dt>Update Date</dt>
+    <dd>{{ supplier.updated_date | date:'short' }}</dd>
+  </dl>
+  <div class="row">
+    <div class="col-md-12">
+      <a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a>
+      <button class="btn btn-danger" type="button" (click)="deleteSupplier(supplier._id)">Delete</button>
+      <a [routerLink]="['/supplierlist']" class="btn btn-info">Cancel</a>
+    </div>
+  </div>
+</div>
