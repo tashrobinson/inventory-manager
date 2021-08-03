@@ -1,1 +1,34 @@
-<router-outlet></router-outlet>
+<app-header (loginEvent)="login()"></app-header>
+<div *ngIf="loggedin; then thenBlock else elseBlock"></div>
+<ng-template #thenBlock>
+  <ng-sidebar-container>
+
+    <!-- A sidebar -->
+    <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
+      <div class="nav">
+        <div><button [ngClass]="current === '/productlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                     (click)="navigate('/productlist')">Products</button></div>
+        <div><button [ngClass]="current === '/supplierlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                     (click)="navigate('/supplierlist')">Suppliers</button></div>
+        <div><button [ngClass]="current === '/shelflist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                     (click)="navigate('/shelflist')">Shelves</button></div>
+        <div><button [ngClass]="current === '/userlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                     (click)="navigate('/userlist')">Users</button></div>
+      </div>
+    </ng-sidebar>
+
+    <!-- Page content -->
+    <div ng-sidebar-content>
+      <!--<button (click)="sidebar.open()">Open sidebar</button>-->
+      <router-outlet></router-outlet>
+    </div>
+  </ng-sidebar-container>
+</ng-template>
+<ng-template #elseBlock>
+  <h1>please login</h1>
+</ng-template>
+
+
+
+
+

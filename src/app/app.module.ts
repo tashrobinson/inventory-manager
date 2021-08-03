@@ -26,7 +26,8 @@ import { MatchPasswordDirective } from './directives/match-password.directive';
 import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 import { VerifyPasswordDirective } from './directives/verify-password.directive';
 import {Ng2SearchPipeModule} from "ng2-search-filter";
-import { NavBarComponent } from './nav-bar/nav-bar.component';
+import { SidebarModule } from 'ng-sidebar';
+import { HeaderComponent } from './header/header.component';
 
 const appRoutes: Routes = [
   {
@@ -159,7 +160,7 @@ const appRoutes: Routes = [
     MatchPasswordDirective,
     ValidateUserNameDirective,
     VerifyPasswordDirective,
-    NavBarComponent
+    HeaderComponent
   ],
     imports: [
         BrowserModule,
@@ -170,6 +171,7 @@ const appRoutes: Routes = [
             {enableTracing: true, useHash: true} // <-- debugging purposes only
         ),
         Ng2SearchPipeModule,
+        SidebarModule.forRoot()
     ],
   providers: [],
   bootstrap: [AppComponent]
