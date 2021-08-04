@@ -92,7 +92,7 @@
         </div>
         <br />
         <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Save</button>
+          <ng-container *ngIf="userIsAdmin"><button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Save</button></ng-container>
           <a [routerLink]="['/userlist']" class="btn btn-info" >Cancel</a>
         </div>
       </form>

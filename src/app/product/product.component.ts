@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation} from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, Input} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -9,7 +9,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductComponent implements OnInit {
 
-  searchtext: string;
+  @Input()
+  userIsAdmin: boolean;
+  searchText: string;
   products: any;
 
   constructor(private http: HttpClient) { }

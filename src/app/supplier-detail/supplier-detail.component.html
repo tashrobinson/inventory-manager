@@ -11,8 +11,8 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a>
-      <button class="btn btn-danger" type="button" (click)="deleteSupplier(supplier._id)">Delete</button>
+      <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a></ng-container>
+      <ng-container *ngIf="userIsAdmin"><button class="btn btn-danger" type="button" (click)="deleteSupplier(supplier._id)">Delete</button></ng-container>
       <a [routerLink]="['/supplierlist']" class="btn btn-info">Cancel</a>
     </div>
   </div>

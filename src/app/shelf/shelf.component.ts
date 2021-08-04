@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
   encapsulation: ViewEncapsulation.None
 })
 export class ShelfComponent implements OnInit {
+
+  @Input()
+  userIsAdmin: boolean;
 
   searchtext: string;
   shelves: any;

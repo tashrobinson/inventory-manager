@@ -1,11 +1,10 @@
 <div class="container">
-  <h1>Edit User</h1>
+  <h1>Register New User</h1>
   <div class="row">
     <div class="col-md-6">
       <form #userForm="ngForm"
-            (ngSubmit)="userForm.form.valid && updateUser(user._id)"
+            (ngSubmit)="userForm.form.valid && saveUser()"
             [appMatchPassword]="['password', 'confirmPassword']"
-            [appVerifyPassword]="['oldPass', 'passHash']"
             novalidate>
         <div class="form-group">
           <label for="username">Username</label>
@@ -15,7 +14,7 @@
                  [(ngModel)]="userModel.username"
                  #username="ngModel"
                  required
-                 minlength="3"/>
+                 minlength="3" />
           <span class="text-danger"
                 *ngIf="(username.touched || userForm.submitted) && username.errors?.required">
                 Username is required
@@ -30,14 +29,14 @@
           </span>
         </div>
         <div class="form-group">
-          <label for="email">Email address</label>
+          <label for="email">Email Address</label>
           <input type="text"
                  class="form-control"
                  name="email" id="email"
                  [(ngModel)]="userModel.email"
                  #email="ngModel"
                  required
-                 minlength="6"/>
+                 minlength="6" />
           <span class="text-danger"
                 *ngIf="(email.touched || userForm.submitted) && email.errors?.required">
                 Email is required
@@ -51,25 +50,7 @@
           </span>
         </div>
         <div class="form-group">
-          <label for="oldPass">Old Password</label>
-          <input type="password"
-                 class="form-control"
-                 name="oldPass" id="oldPass"
-                 [(ngModel)]="userModel.oldPassword"
-                 #oldPassword="ngModel"
-                 required>
-          <span class="text-danger"
-                *ngIf="(oldPassword.touched || userForm.submitted) && oldPassword.errors?.required">
-                Old Password is required
-          </span>
-          <span class="text-danger"
-                *ngIf="oldPassword.touched && oldPassword.errors?.passwordMismatch">
-                Old Password is not correct
-          </span>
-          <input type="hidden" name="passHash" [(ngModel)]="userModel.oldHash" >
-        </div>
-        <div class="form-group">
-          <label for="password">New Password</label>
+          <label for="password">Password</label>
           <input type="password"
                  class="form-control"
                  name="password" id="password"
@@ -87,7 +68,7 @@
           </span>
         </div>
         <div class="form-group">
-          <label for="confirmPassword">Confirm New Password</label>
+          <label for="confirmPassword">Confirm Password</label>
           <input type="password"
                  class="form-control"
                  name="confirmPassword" id="confirmPassword"
@@ -104,17 +85,13 @@
           </span>
         </div>
         <br />
-        <div *ngIf="userIsAdmin"  class="form-group">
-          <input class="form-check-input" type="checkbox" id="isAdmin" name="isAdmin" (change)="userModel.isAdmin = !userModel.isAdmin"
-                 [checked]="userModel.isAdmin">
-          <label class="form-check-label" for="isAdmin">User Is Admin</label>
-        </div>
         <br />
         <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Update</button>
-          <a [routerLink]="['/userlist']" class="btn btn-info">Cancel</a>
+          <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Save</button>
+          <button (click)="cancelRegister()" class="btn btn-info" >Cancel</button>
         </div>
       </form>
     </div>
   </div>
 </div>
+

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserRegister } from "../models/user-register";
@@ -10,6 +10,9 @@ import { UserRegister } from "../models/user-register";
   encapsulation: ViewEncapsulation.None
 })
 export class UserEditComponent implements OnInit {
+
+  @Input()
+  userIsAdmin: boolean;
 
   userModel = new UserRegister();
   user: any = {};

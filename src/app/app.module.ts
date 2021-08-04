@@ -29,6 +29,13 @@ import {Ng2SearchPipeModule} from "ng2-search-filter";
 import { SidebarModule } from 'ng-sidebar';
 import { HeaderComponent } from './header/header.component';
 
+import { AuthModule } from '@auth0/auth0-angular';
+import { environment as env } from '../environments/environment';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+
+
+
 const appRoutes: Routes = [
   {
     path: 'productlist',
@@ -130,8 +137,13 @@ const appRoutes: Routes = [
     component: UserEditComponent,
     data: { title: 'Edit User' }
   },
+  {
+    path: 'register',
+    component: RegisterComponent,
+    data: { title: 'Register' }
+  },
   { path: '',
-    redirectTo: '/productlist',
+    component: AppComponent,
     pathMatch: 'full'
   }
 ];
@@ -160,7 +172,9 @@ const appRoutes: Routes = [
     MatchPasswordDirective,
     ValidateUserNameDirective,
     VerifyPasswordDirective,
-    HeaderComponent
+    HeaderComponent,
+    LoginComponent,
+    RegisterComponent
   ],
     imports: [
         BrowserModule,

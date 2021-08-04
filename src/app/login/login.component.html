@@ -1,0 +1,22 @@
+<form #userForm="ngForm"
+      (ngSubmit)="userForm.form.valid && login()">
+  <div class="imgcontainer">
+    <img src="/assets/img/logo.png" width="162" height="180" alt="Avatar" class="avatar">
+  </div>
+
+  <div class="container">
+    <label for="uname"><b>Username</b></label>
+    <input type="text" placeholder="Enter Username" name="uname" id="uname" [(ngModel)]="userLogin.username" required>
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" id="psw" [(ngModel)]="userLogin.password" required>
+
+    <button type="submit">Login</button>
+
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <!--<button type="button" class="cancelbtn">Cancel</button>-->
+    <a href="#" (click)="register()">Register</a>
+  </div>
+</form>

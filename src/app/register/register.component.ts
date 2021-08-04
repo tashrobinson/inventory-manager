@@ -1,18 +1,17 @@
-import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
-import { Router } from '@angular/router';
-import { HttpClient } from '@angular/common/http';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import { HttpClient} from "@angular/common/http";
+import { Router} from "@angular/router";
 import { UserRegister} from "../models/user-register";
 
 @Component({
-  selector: 'app-user-create',
-  templateUrl: './user-create.component.html',
-  styleUrls: ['./user-create.component.css'],
-  encapsulation: ViewEncapsulation.None
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrls: ['./register.component.css']
 })
-export class UserCreateComponent implements OnInit{
+export class RegisterComponent implements OnInit {
 
-  @Input()
-  userIsAdmin: boolean;
+  @Output()
+  completeEvent = new EventEmitter();
 
   userModel = new UserRegister();
   user: any = {};
@@ -21,6 +20,10 @@ export class UserCreateComponent implements OnInit{
   }
 
   ngOnInit(): void {
+  }
+
+  cancelRegister(){
+    this.completeEvent.emit();
   }
 
   getHash(password) {
@@ -52,8 +55,7 @@ export class UserCreateComponent implements OnInit{
 
     this.http.post('/user', this.user)
       .subscribe(res => {
-          let id = res['_id'];
-          this.router.navigate(['/user-details', id]);
+          this.completeEvent.emit();
         },
         (err) => {
           console.log(err);

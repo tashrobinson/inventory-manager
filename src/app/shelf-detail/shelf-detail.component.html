@@ -15,8 +15,8 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a>
-      <button class="btn btn-danger" type="button" (click)="deleteShelf(shelf._id)">Delete</button>
+      <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a></ng-container>
+      <ng-container *ngIf="userIsAdmin"><button class="btn btn-danger" type="button" (click)="deleteShelf(shelf._id)">Delete</button></ng-container>
       <a [routerLink]="['/shelflist']" class="btn btn-info">Cancel</a>
     </div>
   </div>

@@ -20,6 +20,15 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+/* GET SINGLE User BY Username */
+router.get('/username/:username', function(req, res, next) {
+  User.findOne( {username: req.params.username}, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+
 /* SAVE User */
 router.post('/', function(req, res, next) {
   User.create(req.body, function (err, post) {

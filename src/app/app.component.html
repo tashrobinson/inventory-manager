@@ -1,33 +1,40 @@
-<app-header (loginEvent)="login()"></app-header>
-<div *ngIf="loggedin; then thenBlock else elseBlock"></div>
-<ng-template #thenBlock>
-  <ng-sidebar-container>
+<div *ngIf="current === '/register'; then registerBlock else mainBlock"></div>
+<ng-template #registerBlock>
+  <app-register (completeEvent)="completeRegister()"></app-register>
+</ng-template>
+<ng-template #mainBlock>
+  <div *ngIf="loggedIn; then thenBlock else elseBlock"></div>
+  <ng-template #thenBlock>
+    <app-header [loggedInUser]="loggedInUser"  (loginEvent)="login($event)" ></app-header>
+    <ng-sidebar-container>
 
-    <!-- A sidebar -->
-    <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
-      <div class="nav">
-        <div><button [ngClass]="current === '/productlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
-                     (click)="navigate('/productlist')">Products</button></div>
-        <div><button [ngClass]="current === '/supplierlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
-                     (click)="navigate('/supplierlist')">Suppliers</button></div>
-        <div><button [ngClass]="current === '/shelflist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
-                     (click)="navigate('/shelflist')">Shelves</button></div>
-        <div><button [ngClass]="current === '/userlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
-                     (click)="navigate('/userlist')">Users</button></div>
+      <!-- A sidebar -->
+      <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
+        <div class="nav">
+          <div><button [ngClass]="current === '/productlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                       (click)="navigate('/productlist')">Products</button></div>
+          <div><button [ngClass]="current === '/supplierlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                       (click)="navigate('/supplierlist')">Suppliers</button></div>
+          <div><button [ngClass]="current === '/shelflist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                       (click)="navigate('/shelflist')">Shelves</button></div>
+          <div><button [ngClass]="current === '/userlist' ? 'btn btn-primary btn-lg' : 'btn btn-light btn-lg'"
+                       (click)="navigate('/userlist')">Users</button></div>
+        </div>
+      </ng-sidebar>
+
+      <!-- Page content -->
+      <div ng-sidebar-content>
+        <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
       </div>
-    </ng-sidebar>
-
-    <!-- Page content -->
-    <div ng-sidebar-content>
-      <!--<button (click)="sidebar.open()">Open sidebar</button>-->
-      <router-outlet></router-outlet>
-    </div>
-  </ng-sidebar-container>
+    </ng-sidebar-container>
+  </ng-template>
+  <ng-template #elseBlock>
+      <h1>Please login</h1>
+      <!--TODO build login component and add it here -->
+    <app-login (loginEvent)="login($event)" (registerEvent)="showRegister()"></app-login>
+      <!--<button (click)="login()" class="btn btn-light">Login</button>-->
+  </ng-template>
 </ng-template>
-<ng-template #elseBlock>
-  <h1>please login</h1>
-</ng-template>
-
 
 
 

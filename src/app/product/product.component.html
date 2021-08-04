@@ -5,7 +5,7 @@
       <span class="fas fa-plus" aria-hidden="true"></span>
     </a>
   </h1>
-  <input type="text" class="form-control" [(ngModel)]="searchtext"
+  <input type="text" class="form-control" [(ngModel)]="searchText"
          placeholder="Search">
   <table class="table">
     <thead>
@@ -20,7 +20,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of products | filter:searchtext">
+    <tr *ngFor="let product of products | filter:searchText">
       <td>{{ product.id }}</td>
       <td>{{ product.supplierId }}</td>
       <td>{{ product.name }}</td>
@@ -29,8 +29,8 @@
       <td>{{ product.qty }}</td>
       <td>
         <a [routerLink]="['/product-details', product._id]" class="btn btn-info">Show Detail</a>
-        <a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a>
-        <a [routerLink]="['/product-details/delete', product._id]" class="btn btn-danger">Delete</a>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a></ng-container>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-details/delete', product._id]" class="btn btn-danger">Delete</a></ng-container>
       </td>
     </tr>
     </tbody>

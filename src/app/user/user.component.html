@@ -23,8 +23,8 @@
       <td>{{ user.isAdmin }}</td>
       <td>
         <a [routerLink]="['/user-details', user._id]" class="btn btn-info">Show Detail</a>
-        <a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a>
-        <a [routerLink]="['/user-details/delete', user._id]" class="btn btn-danger">Delete</a>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-details/delete', user._id]" class="btn btn-danger">Delete</a></ng-container>
       </td>
     </tr>
     </tbody>

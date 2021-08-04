@@ -24,8 +24,8 @@
       <td>{{ shelf.status }}</td>
       <td>
         <a [routerLink]="['/shelf-details', shelf._id]" class="btn btn-info">Show Detail</a>
-        <a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a>
-        <a [routerLink]="['/shelf-details/delete', shelf._id]" class="btn btn-danger">Delete</a>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a></ng-container>
+        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-details/delete', shelf._id]" class="btn btn-danger">Delete</a></ng-container>
       </td>
     </tr>
     </tbody>
