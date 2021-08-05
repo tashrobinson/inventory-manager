@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 
   userLogin = new UserLogin();
   user: any = {};
+  failed: boolean;
 
   constructor(private http: HttpClient) { }
 
@@ -25,9 +26,16 @@ export class LoginComponent implements OnInit {
     this.http.get('/user/username/' + this.userLogin.username).subscribe(data => {
       this.user = data;
 
-      if (this.user.passwordHash == this.getHash(this.userLogin.password)) {
+      if (this.user == null){
+        this.failed = true;
+      }
+      else {
+        if (this.user.passwordHash == this.getHash(this.userLogin.password)) {
           console.log(JSON.stringify(this.user));
           this.loginEvent.emit(JSON.stringify(this.user));
+        } else {
+          this.failed = true;
+        }
       }
     });
   }

@@ -14,6 +14,7 @@ export class RegisterComponent implements OnInit {
   completeEvent = new EventEmitter();
 
   userModel = new UserRegister();
+  adminCount: number;
   user: any = {};
 
   constructor(private http: HttpClient, private router: Router) {
@@ -41,26 +42,32 @@ export class RegisterComponent implements OnInit {
 
   saveUser() {
 
-    if(this.userModel.password === this.userModel.confirmPassword){
-      this.user.username = this.userModel.username;
-      this.user.email = this.userModel.email;
-      if (this.userModel.isAdmin){
-        this.user.isAdmin = true;
-      } //kludge to be false if its unset
-      else {
-        this.user.isAdmin = false
-      };
-      this.user.passwordHash = this.getHash(this.userModel.password);
-    }
+    this.http.get('/user/admincount').subscribe(data => {
+      this.adminCount = parseInt(JSON.stringify(data));
+      if(this.userModel.password === this.userModel.confirmPassword){
+        this.user.username = this.userModel.username;
+        this.user.email = this.userModel.email;
+        console.log("Save user user.count " + this.adminCount )
+        if (this.userModel.isAdmin || this.adminCount === 0){ //if no users yet make the first one admin!
+          this.user.isAdmin = true;
+        } //kludge to be false if its unset
+        else {
+          this.user.isAdmin = false
+        };
+        this.user.passwordHash = this.getHash(this.userModel.password);
+      }
 
-    this.http.post('/user', this.user)
-      .subscribe(res => {
-          this.completeEvent.emit();
-        },
-        (err) => {
-          console.log(err);
-        }
-      );
+      this.http.post('/user', this.user)
+        .subscribe(res => {
+            this.completeEvent.emit();
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
+    });
+
+
   }
 
 }

@@ -12,6 +12,20 @@ router.get('/', function(req, res, next) {
   });
 });
 
+router.get('/usercount/', function(req, res, next) {
+  User.countDocuments( function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
+router.get('/admincount/', function(req, res, next) {
+  User.countDocuments( {isAdmin: true}, function (err, post) {
+    if (err) return next(err);
+    res.json(post);
+  });
+});
+
 /* GET SINGLE User BY ID */
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id, function (err, post) {
@@ -52,6 +66,7 @@ router.delete('/:id', function(req, res, next) {
     res.json(post);
   });
 });
+
 
 
 module.exports = router;
