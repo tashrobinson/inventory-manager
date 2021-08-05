@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -25,15 +25,14 @@ import { PasswordPatternDirective } from './directives/password-pattern.directiv
 import { MatchPasswordDirective } from './directives/match-password.directive';
 import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 import { VerifyPasswordDirective } from './directives/verify-password.directive';
-import {Ng2SearchPipeModule} from "ng2-search-filter";
+import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { SidebarModule } from 'ng-sidebar';
 import { HeaderComponent } from './header/header.component';
 
-import { AuthModule } from '@auth0/auth0-angular';
 import { environment as env } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 
 const appRoutes: Routes = [
@@ -176,17 +175,19 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent
   ],
-    imports: [
-        BrowserModule,
-        FormsModule,
-        HttpClientModule,
-        RouterModule.forRoot(
-            appRoutes,
-            {enableTracing: true, useHash: true} // <-- debugging purposes only
-        ),
-        Ng2SearchPipeModule,
-        SidebarModule.forRoot()
-    ],
+  imports: [
+    BrowserModule,
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(
+      appRoutes,
+      {enableTracing: true, useHash: true} // <-- debugging purposes only
+    ),
+    Ng2SearchPipeModule,
+    SidebarModule.forRoot(),
+    ReactiveFormsModule,
+    NgbModule
+  ],
   providers: [],
   bootstrap: [AppComponent]
 })

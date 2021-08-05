@@ -1,8 +1,8 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var SupplierSchema = new mongoose.Schema({
-  id: String,
-  name: String,
+const SupplierSchema = new mongoose.Schema({
+  id: {type: String, unique: true},
+  name: {type: String, unique: true},
   updated_date: { type: Date, default: Date.now },
 });
 

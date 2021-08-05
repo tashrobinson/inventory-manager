@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
 
   getHash(password) {
     let hash = 0;
-    if (password.length == 0) {
+    if (password == null || password.length == 0) {
       return hash;
     }
     for (let i = 0; i < password.length; i++) {

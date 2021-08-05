@@ -26,6 +26,10 @@
     </tbody>
   </table>
     <!-- Add Button -->
-    <button [routerLink]="['/supplier-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">Add Supplier</button>
+  <ng-container *ngIf="userIsAdmin">
+    <button [routerLink]="['/supplier-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
+      Add Supplier
+    </button>
+  </ng-container>
 </div>
 

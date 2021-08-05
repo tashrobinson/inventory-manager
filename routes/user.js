@@ -1,7 +1,7 @@
-var express = require('express');
-var router = express.Router();
-var mongoose = require('mongoose');
-var User = require('../models/User.js');
+const express = require('express');
+const router = express.Router();
+const mongoose = require('mongoose');
+const User = require('../models/User.js');
 
 
 /* GET ALL Users */
@@ -26,6 +26,7 @@ router.get('/admincount/', function(req, res, next) {
   });
 });
 
+
 /* GET SINGLE User BY ID */
 router.get('/:id', function(req, res, next) {
   User.findById(req.params.id, function (err, post) {
@@ -42,6 +43,24 @@ router.get('/username/:username', function(req, res, next) {
   });
 });
 
+/* Authenticate User */
+router.post('/authenticate', function(req, res, next) {
+  console.log("Authenticate " + JSON.stringify(req.body));
+  User.find({ $and: [{username: req.body.username}, {passwordHash: req.body.password}] },
+    function (err, post) {
+    if (err) {
+      console.log("Authenticate error " + err.message)
+      return next(err);
+    }
+    //res.json(post);
+    if (!post || post.length < 1) {
+      console.log("Authenticate error post is empty!")
+      return next(new Error("Authenticate error post is empty!"));
+    }
+    console.log("Authenticate OK! Returning " + JSON.stringify(post));
+    res.json(post[0]);
+  });
+});
 
 /* SAVE User */
 router.post('/', function(req, res, next) {

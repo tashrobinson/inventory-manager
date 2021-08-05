@@ -1,7 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-
+import { AccountService } from "../services/account.service";
+import { User } from '../../../models/User';
 
 @Component({
   selector: 'app-product-create',
@@ -11,13 +12,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductCreateComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
-
   product: any = {};
   suppliers: any;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+      console.log(`Product Create subscription update ${this.user}`);
+    });
+  }
 
   ngOnInit() {
     this.http.get('/supplier').subscribe(data => {

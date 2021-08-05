@@ -1,6 +1,7 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {HeaderComponent} from "./header/header.component";
+import {AccountService} from "./services/account.service";
+import {User} from "../../models/User"
 
 @Component({
   selector: 'app-root',
@@ -10,13 +11,20 @@ import {HeaderComponent} from "./header/header.component";
 export class AppComponent implements OnInit{
   title = 'inventory-manager';
 
-  loggedInUser: any = {};
+  user: User;
   loggedIn: boolean = false;
   _opened: boolean;
   current: string;
   register: boolean;
 
-  constructor(private router: Router, private route: ActivatedRoute, private ref: ChangeDetectorRef) { }
+  constructor(private router: Router, private route: ActivatedRoute,
+              private ref: ChangeDetectorRef, private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.login(x);
+    });
+    this.accountService.getLogoutEvent().subscribe(() => this.logoutEvent());
+  }
 
   ngOnInit(): void {
     this.current = this.router.url;
@@ -31,10 +39,25 @@ export class AppComponent implements OnInit{
   }
 
   login(user){
-    this.loggedIn = true;
-    this.loggedInUser = JSON.parse(user);
-    console.log("Logged in user:" + JSON.stringify(this.loggedInUser))
-    this.navigate("/productlist");
+    if (user == null) return;
+    console.log("Logged in user:" + JSON.stringify(this.user))
+    this.loggedIn = this.user != null;
+    if (this.loggedIn) this.navigate("/productlist");
+  }
+
+  logout() {
+    console.log("App logout");
+    this.accountService.logout();
+    this.loggedIn = false;
+    this.current = "/";
+    this.ref.detectChanges();
+  }
+
+  logoutEvent() {
+    console.log("App logout event");
+    this.loggedIn = false;
+    this.current = "/";
+    this.ref.detectChanges();
   }
 
   showRegister(){
@@ -49,9 +72,9 @@ export class AppComponent implements OnInit{
     this.ref.detectChanges();
   }
 
-  onOutletLoaded(component) {
-    console.log("setting " + component + "user: " + this.loggedInUser.username +  "userIsAdmin = " + this.loggedInUser.userIsAdmin);
-    component.userIsAdmin = this.loggedInUser.isAdmin;
-  }
+  //onOutletLoaded(component) {
+  //  console.log("setting " + component + "user: " + this.user.username +  " userIsAdmin = " + this.user.userIsAdmin);
+  //  component.userIsAdmin = this.user.isAdmin;
+  //}
 
 }

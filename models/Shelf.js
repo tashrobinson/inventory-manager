@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var ShelfSchema = new mongoose.Schema({
-  id: String,
+const ShelfSchema = new mongoose.Schema({
+  id: {type: String, unique: true},
   productId: String,
   location: String,
   status: String,

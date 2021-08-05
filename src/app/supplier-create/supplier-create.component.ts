@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {AccountService} from "../services/account.service";
+import { User } from "../../../models/User";
 
 @Component({
   selector: 'app-supplier-create',
@@ -10,12 +12,18 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SupplierCreateComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
 
   supplier: any = {};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+    });
+  }
 
   ngOnInit(): void {
   }

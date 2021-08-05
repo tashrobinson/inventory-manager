@@ -21,13 +21,17 @@
       <td>
         <a [routerLink]="['/user-details', user._id]" class="btn btn-info">Show Detail</a>
         <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-details/delete', user._id]" class="btn btn-danger">Delete</a></ng-container>
+        <ng-container *ngIf="userIsAdmin"><button (click)="deleteUser(user._id)" class="btn btn-danger">Delete</button></ng-container>
       </td>
     </tr>
     </tbody>
   </table>
 
   <!-- Add Button -->
-  <button [routerLink]="['/user-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">Add User </button>
+  <ng-container *ngIf="userIsAdmin">
+    <button [routerLink]="['/user-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
+      Add User
+    </button>
+  </ng-container>
 </div>
 

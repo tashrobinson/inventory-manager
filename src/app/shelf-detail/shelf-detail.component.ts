@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+import {AccountService} from "../services/account.service";
+import { User } from "../../../models/User";
 
 @Component({
   selector: 'app-shelf-detail',
@@ -10,12 +12,19 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ShelfDetailComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
-
   shelf: any = {};
 
-  constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient) { }
+  constructor(private router: Router,
+              private route: ActivatedRoute,
+              private http: HttpClient,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+    });
+  }
 
   ngOnInit() {
     if (this.router.url.includes("delete")){

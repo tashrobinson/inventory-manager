@@ -1,7 +1,7 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var ProductSchema = new mongoose.Schema({
-  id: String,
+const ProductSchema = new mongoose.Schema({
+  id: {type: String, unique: true},
   supplierId: String,
   name: String,
   part: String,

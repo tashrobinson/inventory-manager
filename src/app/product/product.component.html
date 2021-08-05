@@ -33,6 +33,10 @@
     </tbody>
   </table>
       <!-- Add Button -->
-      <button [routerLink]="['/product-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">Add Product</button>
+  <ng-container *ngIf="userIsAdmin">
+    <button [routerLink]="['/product-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
+      Add Product
+    </button>
+  </ng-container>
 </div>
 

@@ -5,7 +5,7 @@
 <ng-template #mainBlock>
   <div *ngIf="loggedIn; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
-    <app-header [loggedInUser]="loggedInUser"  (loginEvent)="login($event)" ></app-header>
+    <app-header (logoutEvent)="logout()" ></app-header>
     <ng-sidebar-container>
 
       <!-- A sidebar -->
@@ -24,15 +24,14 @@
 
       <!-- Page content -->
       <div ng-sidebar-content>
-        <router-outlet (activate)="onOutletLoaded($event)"></router-outlet>
+        <!--<router-outlet (activate)="onOutletLoaded($event)"></router-outlet>-->
+        <router-outlet></router-outlet>
       </div>
     </ng-sidebar-container>
   </ng-template>
   <ng-template #elseBlock>
       <h1>Please login</h1>
-      <!--TODO build login component and add it here -->
-    <app-login (loginEvent)="login($event)" (registerEvent)="showRegister()"></app-login>
-      <!--<button (click)="login()" class="btn btn-light">Login</button>-->
+      <app-login (loginEvent)="login($event)" (registerEvent)="showRegister()"></app-login>
   </ng-template>
 </ng-template>
 

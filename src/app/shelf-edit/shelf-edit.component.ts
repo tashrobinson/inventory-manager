@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {AccountService} from "../services/account.service";
+import { User } from "../../../models/User";
 
 
 @Component({
@@ -11,13 +13,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ShelfEditComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
-
   products: any;
   shelf: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              private route: ActivatedRoute,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+    });
+  }
 
   ngOnInit() {
     this.getShelf(this.route.snapshot.params['id']);

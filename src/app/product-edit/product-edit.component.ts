@@ -1,6 +1,8 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import { AccountService } from "../services/account.service";
+import { User } from '../../../models/User';
 
 
 @Component({
@@ -11,13 +13,22 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProductEditComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
 
   suppliers: any;
   product: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient,
+              private router: Router,
+              private route: ActivatedRoute,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+      console.log(`Product Edit subscription update ${this.user}`);
+    });
+  }
 
   ngOnInit() {
     this.getProduct(this.route.snapshot.params['id']);

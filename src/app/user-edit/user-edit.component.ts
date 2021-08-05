@@ -2,6 +2,8 @@ import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { UserRegister } from "../models/user-register";
+import {AccountService} from "../services/account.service";
+import { User } from "../../../models/User";
 
 @Component({
   selector: 'app-user-edit',
@@ -11,20 +13,28 @@ import { UserRegister } from "../models/user-register";
 })
 export class UserEditComponent implements OnInit {
 
-  @Input()
+  private currentUser: User;
   userIsAdmin: boolean;
 
   userModel = new UserRegister();
   user: any = {};
 
-  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute) { }
+  constructor(private http: HttpClient, private router: Router, private route: ActivatedRoute,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.currentUser = x;
+      this.userIsAdmin = (this.currentUser != null && this.currentUser.isAdmin);
+      console.log(`User edit subscription update ${JSON.stringify(this.currentUser)}`);
+    });
+  }
 
   ngOnInit() {
     this.getUser(this.route.snapshot.params['id']);
   }
 
   getUser(id) {
-    this.http.get('/user/'+id).subscribe(data => {
+    //this.http.get('/user/'+id).subscribe(data => {
+    this.accountService.getById(id).subscribe(data => {
       this.user = data;
       this.userModel.username = this.user.username;
       this.userModel.email = this.user.email;
@@ -35,7 +45,7 @@ export class UserEditComponent implements OnInit {
 
   getHash(password) {
     let hash = 0;
-    if (password.length == 0) {
+    if (password == null || password.length == 0) {
       return hash;
     }
     for (let i = 0; i < password.length; i++) {
@@ -60,7 +70,9 @@ export class UserEditComponent implements OnInit {
       this.user.passwordHash = this.getHash(this.userModel.password);
     }
 
-    this.http.put('/user/'+id, this.user)
+    //this.http.put('/user/'+id, this.user)
+    console.log(`User edit - updating ${id} ${JSON.stringify(this.user)}`)
+    this.accountService.update(id, this.user)
       .subscribe(res => {
           let id = res['_id'];
           this.router.navigate(['/user-details', id]);

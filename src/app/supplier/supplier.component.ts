@@ -1,5 +1,7 @@
 import {Component, Input, OnInit, ViewEncapsulation} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import {AccountService} from "../services/account.service";
+import { User } from "../../../models/User";
 
 @Component({
   selector: 'app-supplier',
@@ -9,13 +11,19 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SupplierComponent implements OnInit {
 
-  @Input()
+  private user: User;
   userIsAdmin: boolean;
 
   searchtext: string;
   suppliers: any;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+              private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.user = x;
+      this.userIsAdmin = (this.user != null && this.user.isAdmin);
+    });
+  }
 
   ngOnInit(): void {
     this.http.get('/supplier').subscribe(data => {

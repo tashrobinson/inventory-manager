@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import { AccountService } from "../services/account.service";
+import { User } from "../../../models/User";
 
 @Component({
   selector: 'app-header',
@@ -7,19 +9,25 @@ import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @Input()
-  loggedInUser: any;
+  loggedInUser: User;
+  username: string;
+  userIsAdmin: boolean;
 
-  @Output()
-  loginEvent = new EventEmitter<string>();
-
-  constructor() { }
+  constructor(private accountService: AccountService) {
+    this.accountService.user.subscribe(x => {
+      this.loggedInUser = x;
+      this.username = this.loggedInUser != null ? this.loggedInUser.username : "";
+      this.userIsAdmin = (this.loggedInUser != null && this.loggedInUser.isAdmin)
+      console.log(`Header subscription update ${this.loggedInUser}`);
+    });
+  }
 
   ngOnInit(): void {
   }
 
-  loginClick(){
-     this.loginEvent.emit('');
+  logoutClick(){
+     console.log("Logout was clicked!")
+     this.accountService.logout();
   }
 
 }
