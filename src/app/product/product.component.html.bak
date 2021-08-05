@@ -1,10 +1,13 @@
 <div class="container">
   <!--<app-nav-bar></app-nav-bar>-->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  <h1 class="title is-italic has-text-black">Product List </h1>
+  <h1>Product List
+    <a [routerLink]="['/product-create']" class="btn btn-light btn-lg">
+      <span class="fas fa-plus" aria-hidden="true"></span>
+    </a>
+  </h1>
   <input type="text" class="form-control" [(ngModel)]="searchText"
          placeholder="Search">
-  <table class="table is-bordered is-striped is-fullwidth has-background-info-light mt-3">
+  <table class="table">
     <thead>
     <tr>
       <th>ID</th>
@@ -32,7 +35,5 @@
     </tr>
     </tbody>
   </table>
-      <!-- Add Button -->
-      <button [routerLink]="['/product-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">Add Product</button>
 </div>
 

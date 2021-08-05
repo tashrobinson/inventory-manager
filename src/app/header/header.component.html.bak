@@ -1,8 +1,6 @@
-
-<div class="row has-text-centered" style="background-color: #558fe5; border-bottom: 7px solid #8D737F;
-outline: 7px solid #2C4378; margin-bottom: 10px;">
+<div class="row">
   <div class="column left"><img src="/assets/img/logo.png" width="81" height="90"></div>
-  <div class="column middle" ><h1 class="title is-italic is-bold is-1 has-text-white">Inventory Management</h1></div>
+  <div class="column middle"><h1>Inventory Management</h1></div>
   <div class="column right">
     <button (click)="loginClick()">
       <i class="fas fa-user"></i>
