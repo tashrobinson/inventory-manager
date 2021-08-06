@@ -32,7 +32,10 @@ export class UserComponent implements OnInit {
     this.accountService.getAll().subscribe(data => {
         this.users = data;
     });
+  }
 
+  checkCurrentUser(id){
+    return id === this.currentUser._id;
   }
 
   deleteUser(id) {

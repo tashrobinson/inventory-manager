@@ -11,13 +11,17 @@ export class HeaderComponent implements OnInit {
 
   loggedInUser: User;
   username: string;
+  gravatarEmail: string;
   userIsAdmin: boolean;
+  userID: string;
 
   constructor(private accountService: AccountService) {
     this.accountService.user.subscribe(x => {
       this.loggedInUser = x;
       this.username = this.loggedInUser != null ? this.loggedInUser.username : "";
-      this.userIsAdmin = (this.loggedInUser != null && this.loggedInUser.isAdmin)
+      this.userIsAdmin = (this.loggedInUser != null && this.loggedInUser.isAdmin);
+      this.gravatarEmail = this.loggedInUser != null ? this.loggedInUser.email : "";
+      this.userID = this.loggedInUser != null ? this.loggedInUser._id : "";
       console.log(`Header subscription update ${this.loggedInUser}`);
     });
   }
@@ -28,6 +32,10 @@ export class HeaderComponent implements OnInit {
   logoutClick(){
      console.log("Logout was clicked!")
      this.accountService.logout();
+  }
+
+  profileClick(){
+    console.log("Profile was clicked!")
   }
 
 }

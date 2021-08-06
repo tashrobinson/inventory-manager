@@ -1,7 +1,16 @@
-  <div class="imgcontainer">
-    <img src="/assets/img/logo.png" width="162" height="180" alt="Avatar" class="avatar">
-  </div>
-  <form [formGroup]="form" (ngSubmit)="login()">
+<div class="middle">
+  <h1 class="title is-italic is-bold is-1">
+    Inventory Management
+  </h1>
+</div>
+<div class="imgcontainer">
+  <img src="/assets/img/logo.png" width="162" height="180" alt="Avatar" class="avatar">
+</div>
+<div class="middle">
+  <h2>Please login</h2>
+</div>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <div class="container">
     <div class="form-group">
       <label for="username">Username</label>
       <input type="text" formControlName="username" class="form-control" id="username"
@@ -20,13 +29,11 @@
     </div>
     <span class="text-danger" *ngIf="failed">No user with that username password combination!</span>
     <div class="form-group">
-      <button [disabled]="loading" class="btn btn-primary">
-        <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-        Login
-      </button>
-      <a href="#" (click)="register()" class="btn btn-link">Register</a>
+      <button class="btn btn-primary">Login</button>
+      <a href="#" (click)="register()" class="btn btn-outline-primary">Register</a>
     </div>
-  </form>
+  </div>
+</form>
 
 
 

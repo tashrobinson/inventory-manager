@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ValidatorFn, AbstractControl } from '@angular/forms';
 import { FormGroup } from '@angular/forms';
+import { Md5 } from "ts-md5";
 
 @Injectable({
   providedIn: 'root'
@@ -48,25 +49,15 @@ export class CustomvalidationService {
         return null;
       }
 
-      if (this.getHash(passwordControl.value) !== hashPasswordControl.value  ) {
+      if (passwordControl.value == null) return null;
+
+      const passHash = Md5.hashStr(passwordControl.value.trim().toLowerCase());
+      if (passHash !== hashPasswordControl.value  ) {
         passwordControl.setErrors({ passwordMismatch: true });
       } else {
         passwordControl.setErrors(null);
       }
     }
-  }
-
-  getHash(password) {
-    let hash = 0;
-    if (password == null || password.length == 0) {
-      return hash;
-    }
-    for (let i = 0; i < password.length; i++) {
-      let char = password.charCodeAt(i);
-      hash = ((hash<<5)-hash)+char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash.toString();
   }
 
   userNameValidator(userControl: AbstractControl) {

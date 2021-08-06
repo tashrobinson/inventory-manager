@@ -33,6 +33,7 @@ import { environment as env } from '../environments/environment';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { GravatarDirective } from './directives/gravatar.directive';
 
 
 const appRoutes: Routes = [
@@ -173,7 +174,8 @@ const appRoutes: Routes = [
     VerifyPasswordDirective,
     HeaderComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    GravatarDirective
   ],
   imports: [
     BrowserModule,

@@ -34,6 +34,10 @@ export class UserDetailComponent implements OnInit {
     }
   }
 
+  checkCurrentUser(id){
+    return id === this.currentUser._id;
+  }
+
   getUserDetail(id) {
     //this.http.get('/user/'+id).subscribe(data => {
     //  this.user = data;

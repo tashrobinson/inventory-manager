@@ -4,11 +4,11 @@ outline: 7px solid #2C4378; margin-bottom: 10px;">
   <div class="column left"><img src="/assets/img/logo.png" width="81" height="90"></div>
   <div class="column middle" ><h1 class="title is-italic is-bold is-1 has-text-white">Inventory Management</h1></div>
   <div class="column right" ngbDropdown #myDrop="ngbDropdown">
-    <button class="btn btn-outline-primary" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">
-      <i class="fas fa-user"></i>
+    <button class="btn btn-outline-light" id="dropdownManual" ngbDropdownAnchor (focus)="myDrop.open()">
+      <img appGravatar [email]="gravatarEmail" width="50" height="50" >
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownManual">
-      <button ngbDropdownItem>Profile</button>
+      <a [routerLink]="['/user-details', userID]" ngbDropdownItem>Profile</a>
       <button (click)="logoutClick()" ngbDropdownItem>Logout</button>
       <button ngbDropdownItem></button>
     </div>

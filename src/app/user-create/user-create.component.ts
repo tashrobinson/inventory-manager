@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { UserRegister} from "../models/user-register";
 import {AccountService} from "../services/account.service";
 import { User } from "../../../models/User";
+import { Md5 } from "ts-md5";
 
 @Component({
   selector: 'app-user-create',
@@ -31,19 +32,6 @@ export class UserCreateComponent implements OnInit{
   ngOnInit(): void {
   }
 
-  getHash(password) {
-    let hash = 0;
-    if (password == null || password.length == 0) {
-      return hash;
-    }
-    for (let i = 0; i < password.length; i++) {
-      let char = password.charCodeAt(i);
-      hash = ((hash<<5)-hash)+char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash.toString();
-  }
-
   saveUser() {
 
     if(this.userModel.password === this.userModel.confirmPassword){
@@ -55,7 +43,7 @@ export class UserCreateComponent implements OnInit{
       else {
         this.user.isAdmin = false
       };
-      this.user.passwordHash = this.getHash(this.userModel.password);
+      this.user.passwordHash = Md5.hashStr(this.userModel.password.trim().toLowerCase());
     }
 
     //this.http.post('/user', this.user)

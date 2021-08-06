@@ -4,6 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AccountService} from "../services/account.service";
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import {Md5} from "ts-md5";
 
 @Component({
   selector: 'app-login',
@@ -19,7 +20,6 @@ export class LoginComponent implements OnInit {
   form: FormGroup;
   user: any = {};
   failed: boolean;
-  loading = false;
   submitted = false;
 
   constructor(private http: HttpClient,
@@ -46,19 +46,18 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.accountService.login(this.f.username.value, this.getHash(this.f.password.value))
+    if (this.f.password.value == null) return;
+
+    const passHash = Md5.hashStr(this.f.password.value.trim().toLowerCase());
+    this.accountService.login(this.f.username.value, passHash)
       .pipe(first())
       .subscribe({
         next: () => {
           console.log("Login " + this.f.username.value)
           this.loginEvent.emit(this.f.username.value);
-          // get return url from query parameters or default to home page
-          //const returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
-          //this.router.navigateByUrl(returnUrl);
         },
         error: error => {
           this.failed = true;
-          this.loading = false;
         }
       });
 
@@ -71,17 +70,5 @@ export class LoginComponent implements OnInit {
     this.registerEvent.emit();
   }
 
-  getHash(password) {
-    let hash = 0;
-    if (password == null || password.length == 0) {
-      return hash;
-    }
-    for (let i = 0; i < password.length; i++) {
-      let char = password.charCodeAt(i);
-      hash = ((hash<<5)-hash)+char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash.toString();
-  }
 
 }

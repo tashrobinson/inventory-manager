@@ -11,8 +11,8 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
-      <ng-container *ngIf="userIsAdmin"><button class="btn btn-danger" type="button" (click)="deleteUser(user._id)">Delete</button></ng-container>
+      <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
+      <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)"><button class="btn btn-danger" type="button" (click)="deleteUser(user._id)">Delete</button></ng-container>
       <a [routerLink]="['/userlist']" class="btn btn-info" >Cancel</a>
     </div>
   </div>

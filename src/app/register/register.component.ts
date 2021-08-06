@@ -2,6 +2,7 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import { HttpClient} from "@angular/common/http";
 import { Router} from "@angular/router";
 import { UserRegister} from "../models/user-register";
+import { Md5 } from "ts-md5";
 
 @Component({
   selector: 'app-register',
@@ -27,19 +28,6 @@ export class RegisterComponent implements OnInit {
     this.completeEvent.emit();
   }
 
-  getHash(password) {
-    let hash = 0;
-    if (password == null || password.length == 0) {
-      return hash;
-    }
-    for (let i = 0; i < password.length; i++) {
-      let char = password.charCodeAt(i);
-      hash = ((hash<<5)-hash)+char;
-      hash = hash & hash; // Convert to 32bit integer
-    }
-    return hash.toString();
-  }
-
   saveUser() {
 
     this.http.get('/user/admincount').subscribe(data => {
@@ -54,7 +42,7 @@ export class RegisterComponent implements OnInit {
         else {
           this.user.isAdmin = false
         };
-        this.user.passwordHash = this.getHash(this.userModel.password);
+        this.user.passwordHash = Md5.hashStr(this.userModel.password.trim().toLowerCase());
       }
 
       this.http.post('/user', this.user)

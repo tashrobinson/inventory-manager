@@ -20,8 +20,8 @@
       <td>{{ user.isAdmin }}</td>
       <td>
         <a [routerLink]="['/user-details', user._id]" class="btn btn-info">Show Detail</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
-        <ng-container *ngIf="userIsAdmin"><button (click)="deleteUser(user._id)" class="btn btn-danger">Delete</button></ng-container>
+        <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
+        <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)"><button (click)="deleteUser(user._id)" class="btn btn-danger">Delete</button></ng-container>
       </td>
     </tr>
     </tbody>
