@@ -13,7 +13,8 @@ export class UserDetailComponent implements OnInit {
 
   private currentUser: User;
   userIsAdmin: boolean;
-
+  popoverTitle = 'Are you sure?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
   user: any = {};
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,
@@ -39,9 +40,6 @@ export class UserDetailComponent implements OnInit {
   }
 
   getUserDetail(id) {
-    //this.http.get('/user/'+id).subscribe(data => {
-    //  this.user = data;
-    //});
     this.accountService.getById(id).subscribe(data => {
         this.user = data;
     });
@@ -64,4 +62,5 @@ export class UserDetailComponent implements OnInit {
       );
   }
 
+  cancel(){}
 }

@@ -17,6 +17,8 @@ export class UserComponent implements OnInit {
   userIsAdmin: boolean;
   searchtext: string;
   users: any;
+  popoverTitle = 'Are you sure?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
 
   constructor(private router: Router,
               private http: HttpClient,
@@ -47,12 +49,14 @@ export class UserComponent implements OnInit {
             this.accountService.logout();
           }
           else {
-            this.router.navigate(['/userlist']);
+            this.ngOnInit();
           }
         }, (err) => {
           console.log(err);
         }
       );
   }
+
+  cancel(){}
 
 }

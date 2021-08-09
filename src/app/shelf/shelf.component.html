@@ -23,7 +23,18 @@
       <td>
         <a [routerLink]="['/shelf-details', shelf._id]" class="btn btn-info">Show Detail</a>
         <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a></ng-container>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-details/delete', shelf._id]" class="btn btn-danger">Delete</a></ng-container>
+        <ng-container *ngIf="userIsAdmin">
+          <button
+          class="btn btn-danger"
+          mwlConfirmationPopover
+          [popoverTitle]="popoverTitle"
+          [popoverMessage]="popoverMessage"
+          placement="left"
+          (confirm)="deleteShelf(shelf._id)"
+          (cancel)="cancel()">
+          Delete
+          </button>
+        </ng-container>
       </td>
     </tr>
     </tbody>

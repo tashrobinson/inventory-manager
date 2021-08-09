@@ -15,6 +15,8 @@ export class ShelfDetailComponent implements OnInit {
   private user: User;
   userIsAdmin: boolean;
   shelf: any = {};
+  popoverTitle = 'Are you sure?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
 
   constructor(private router: Router,
               private route: ActivatedRoute,
@@ -50,4 +52,6 @@ export class ShelfDetailComponent implements OnInit {
         }
       );
   }
+
+  cancel(){}
 }

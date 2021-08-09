@@ -1,7 +1,8 @@
 import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AccountService} from "./services/account.service";
-import {User} from "../../models/User"
+import {User} from "../../models/User";
+
 
 @Component({
   selector: 'app-root',

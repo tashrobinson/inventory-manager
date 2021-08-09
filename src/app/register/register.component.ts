@@ -3,6 +3,7 @@ import { HttpClient} from "@angular/common/http";
 import { Router} from "@angular/router";
 import { UserRegister} from "../models/user-register";
 import { Md5 } from "ts-md5";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -17,6 +18,8 @@ export class RegisterComponent implements OnInit {
   userModel = new UserRegister();
   adminCount: number;
   user: any = {};
+  isValidFormSubmitted = false;
+  emailPattern = "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -28,7 +31,13 @@ export class RegisterComponent implements OnInit {
     this.completeEvent.emit();
   }
 
-  saveUser() {
+  saveUser(form: NgForm) {
+
+    this.isValidFormSubmitted = false;
+    if (form.invalid) {
+      return;
+    }
+    this.isValidFormSubmitted = true;
 
     this.http.get('/user/admincount').subscribe(data => {
       this.adminCount = parseInt(JSON.stringify(data));

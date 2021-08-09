@@ -37,6 +37,7 @@
                  [(ngModel)]="userModel.email"
                  #email="ngModel"
                  required
+                 email="true"
                  minlength="6"/>
           <span class="text-danger"
                 *ngIf="(email.touched || userForm.submitted) && email.errors?.required">

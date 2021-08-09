@@ -19,6 +19,8 @@ export class UserCreateComponent implements OnInit{
 
   userModel = new UserRegister();
   user: any = {};
+  emailPattern = "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+
 
   constructor(private http: HttpClient, private router: Router,
               private accountService: AccountService) {

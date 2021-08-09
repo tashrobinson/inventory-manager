@@ -3,7 +3,7 @@
   <div class="row">
     <div class="col-md-6">
       <form #userForm="ngForm"
-            (ngSubmit)="userForm.form.valid && saveUser()"
+            (ngSubmit)="userForm.form.valid && saveUser(userForm)"
             [appMatchPassword]="['password', 'confirmPassword']"
             novalidate>
         <div class="form-group">
@@ -34,6 +34,8 @@
                  class="form-control"
                  name="email" id="email"
                  [(ngModel)]="userModel.email"
+                 email
+                 [pattern]="emailPattern"
                  #email="ngModel"
                  required
                  minlength="6" />
@@ -45,7 +47,7 @@
                 *ngIf="(email.touched || userForm.submitted) && email.errors?.minlength">
                 Minimum Email length is 6
           </span>
-          <span class="text-danger" *ngIf="email.touched && email.errors?.email">
+          <span class="text-danger" *ngIf="(email.touched || userForm.submitted) && (email.errors?.email || email.errors?.pattern)">
                 Enter a valid email address
           </span>
         </div>

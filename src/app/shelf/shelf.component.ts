@@ -16,6 +16,8 @@ export class ShelfComponent implements OnInit {
   searchtext: string;
   shelves: any;
   products: any;
+  popoverTitle = 'Are you sure?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.user.subscribe(x => {
@@ -34,4 +36,16 @@ export class ShelfComponent implements OnInit {
 
   }
 
+  deleteShelf(id) {
+    console.log(`deleting ${id}`)
+    this.http.delete(`/shelf/${id}`)
+      .subscribe(res => {
+          this.ngOnInit(); //reload the table
+        }, (err) => {
+          console.log(err);
+        }
+      );
+  }
+
+  cancel(){}
 }
