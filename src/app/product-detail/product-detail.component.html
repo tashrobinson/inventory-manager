@@ -15,6 +15,15 @@
     <dd>{{ product.qty }}</dd>
     <dt>Update Date</dt>
     <dd>{{ product.updated_date | date:'short' }}</dd>
+
+    <ng-container *ngIf="shelf != null">\
+      <dt>Shelf ID</dt>
+      <dd>{{ shelf.id}}</dd>
+      <dt>Shelf location</dt>
+      <dd>{{ shelf.location}}</dd>
+      <dt>Shelf Status</dt>
+      <dd>{{ shelf.status}}</dd>
+    </ng-container>
   </dl>
   <br />
   <div class="row">

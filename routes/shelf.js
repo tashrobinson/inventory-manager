@@ -20,6 +20,21 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
+/* GET SINGLE Shelf BY ProductID */
+router.get('/product/:id', function(req, res, next) {
+  Shelf.findOne( {productId: req.body.productId }, function (err, post) {
+    if (err) return next(err);
+
+    if (!post || post.length < 1) {
+      console.log("No shelves found!")
+      return next(new Error("No Shelf!"));
+    }
+
+    res.json(post[0]);
+  });
+});
+
+
 /* SAVE Shelf */
 router.post('/', function(req, res, next) {
   Shelf.create(req.body, function (err, post) {

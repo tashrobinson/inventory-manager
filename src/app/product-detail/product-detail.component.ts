@@ -13,6 +13,7 @@ import { User } from '../../../models/User';
 export class ProductDetailComponent implements OnInit {
 
   private user: User;
+  shelf: any = {};
   userIsAdmin: boolean;
   popoverTitle = 'Are you sure?';
   popoverMessage = 'Are you really <b>sure</b> you want to do this?';
@@ -41,6 +42,11 @@ export class ProductDetailComponent implements OnInit {
   getProductDetail(id) {
     this.http.get('/product/'+id).subscribe(data => {
       this.product = data;
+
+      this.http.get('/shelf/product/'+ this.product.productId).subscribe(data => {
+        this.shelf = data;
+      });
+
     });
   }
 

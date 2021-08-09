@@ -1,4 +1,4 @@
-import {Injectable, Output} from '@angular/core';
+import { Injectable, Output } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';

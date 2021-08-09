@@ -46,14 +46,6 @@ export class AppComponent implements OnInit{
     if (this.loggedIn) this.navigate("/productlist");
   }
 
-  logout() {
-    console.log("App logout");
-    this.accountService.logout();
-    this.loggedIn = false;
-    this.current = "/";
-    this.ref.detectChanges();
-  }
-
   logoutEvent() {
     console.log("App logout event");
     this.loggedIn = false;
