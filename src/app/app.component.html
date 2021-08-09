@@ -5,7 +5,7 @@
 <ng-template #mainBlock>
   <div *ngIf="loggedIn; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
-    <app-header (logoutEvent)="logout()" ></app-header>
+    <app-header></app-header>
     <ng-sidebar-container>
 
       <!-- A sidebar -->

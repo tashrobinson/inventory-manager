@@ -1,8 +1,8 @@
-import {Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation} from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import {AccountService} from "../services/account.service";
+import { AccountService } from "../services/account.service";
 import { User } from "../../../models/User";
-import {Router} from "@angular/router";
+import { Router } from "@angular/router";
 
 
 @Component({

@@ -27,7 +27,7 @@
         <br />
         <div class="form-group">
           <ng-container *ngIf="userIsAdmin"><button type="submit" class="btn btn-success" [disabled]="!shelfForm.form.valid">Update</button></ng-container>
-          <a [routerLink]="['/shelflist']" class="btn btn-info btn-lg">Cancel</a>
+          <a [routerLink]="['/shelflist']" class="btn btn-info">Cancel</a>
         </div>
       </form>
     </div>
