@@ -16,7 +16,7 @@
     <dt>Update Date</dt>
     <dd>{{ product.updated_date | date:'short' }}</dd>
 
-    <ng-container *ngIf="shelf != null">\
+    <ng-container *ngIf="shelf._id">
       <dt>Shelf ID</dt>
       <dd>{{ shelf.id}}</dd>
       <dt>Shelf location</dt>

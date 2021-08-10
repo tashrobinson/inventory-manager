@@ -30,6 +30,7 @@ export class ShelfComponent implements OnInit {
     this.http.get('/shelf').subscribe(data => {
       this.shelves = data;
     });
+
     this.http.get('/product').subscribe(data => {
       this.products = data;
     });

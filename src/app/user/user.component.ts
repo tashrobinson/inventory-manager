@@ -41,11 +41,11 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(id) {
-    //this.http.delete('/user/'+id)
     this.accountService.delete(id)
       .subscribe(res => {
-          console.log(`User detail delete user ${id}  ${JSON.stringify(this.accountService.userValue)} `)
-          if (this.accountService.userValue != null && id != this.accountService.userValue._id){
+          console.log(`User component delete user ${id}  ${JSON.stringify(this.accountService.userValue)} `)
+          if (this.accountService.userValue == null || id == this.accountService.userValue._id){
+            console.log("User component Calling logout");
             this.accountService.logout();
           }
           else {
@@ -56,6 +56,7 @@ export class UserComponent implements OnInit {
         }
       );
   }
+
 
   cancel(){}
 

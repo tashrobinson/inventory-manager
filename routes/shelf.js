@@ -12,7 +12,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
-/* GET SINGLE Shelf BY ID */
+/* GET SINGLE Shelf BY ID */  //localhost:3000/shelf/123457
 router.get('/:id', function(req, res, next) {
   Shelf.findById(req.params.id, function (err, post) {
     if (err) return next(err);
@@ -20,17 +20,22 @@ router.get('/:id', function(req, res, next) {
   });
 });
 
-/* GET SINGLE Shelf BY ProductID */
+/* GET SINGLE Shelf BY ProductID */ //localhost:3000/shelf/product/<id>
 router.get('/product/:id', function(req, res, next) {
-  Shelf.findOne( {productId: req.body.productId }, function (err, post) {
-    if (err) return next(err);
+  console.log(`Shelf find by product ${req.params.id}`)
+  Shelf.findOne( {productId: req.params.id }, function (err, post) {
+   if (err){
+     console.log(`shelf find product error ${err.message}`)
+     return next(err);
+   }
 
-    if (!post || post.length < 1) {
-      console.log("No shelves found!")
-      return next(new Error("No Shelf!"));
-    }
+   if (!post || post.length < 1) {
+     console.log("No shelves found!")
+     return next(new Error("No Shelf!"));
+   }
 
-    res.json(post[0]);
+   console.log(`Shelf found product ${JSON.stringify(post)}`)
+   res.json(post);
   });
 });
 

@@ -11,6 +11,14 @@
     <dd>{{ shelf.status }}</dd>
     <dt>Update Date</dt>
     <dd>{{ shelf.updated_date | date:'short' }}</dd>
+    <ng-container *ngIf="product._id">
+    <dt>Product Name</dt>
+      <dd>{{ product.name }}</dd>
+      <dt>Product Part</dt>
+      <dd>{{ product.part }}</dd>
+      <dt>Product Quantity</dt>
+      <dd>{{ product.qty }}</dd>
+    </ng-container>
   </dl>
   <br />
   <div class="row">

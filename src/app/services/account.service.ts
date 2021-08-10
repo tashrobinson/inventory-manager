@@ -23,7 +23,7 @@ export class AccountService {
   }
 
   public get userValue(): User {
-    console.log(`User value ${JSON.stringify(this.userSubject.value)}`)
+    //console.log(`User value ${JSON.stringify(this.userSubject.value)}`)
     return this.userSubject.value;
   }
 

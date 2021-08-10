@@ -15,6 +15,7 @@ export class ShelfDetailComponent implements OnInit {
   private user: User;
   userIsAdmin: boolean;
   shelf: any = {};
+  product: any = {};
   popoverTitle = 'Are you sure?';
   popoverMessage = 'Are you really <b>sure</b> you want to do this?';
 
@@ -40,6 +41,10 @@ export class ShelfDetailComponent implements OnInit {
   getShelfDetail(id) {
     this.http.get('/shelf/'+id).subscribe(data => {
       this.shelf = data;
+
+      this.http.get('/product/shelf/'+ this.shelf.productId).subscribe(data => {
+        this.product = data;
+      });
     });
   }
 

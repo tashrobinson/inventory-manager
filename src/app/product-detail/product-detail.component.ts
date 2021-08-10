@@ -43,7 +43,7 @@ export class ProductDetailComponent implements OnInit {
     this.http.get('/product/'+id).subscribe(data => {
       this.product = data;
 
-      this.http.get('/shelf/product/'+ this.product.productId).subscribe(data => {
+      this.http.get('/shelf/product/'+ this.product.id).subscribe(data => {
         this.shelf = data;
       });
 
