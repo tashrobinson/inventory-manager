@@ -17,7 +17,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let product of products | filter:searchText">
+    <tr *ngFor="let product of products
+      | wildcardSearchFilterPipe:['id','supplierId','name','part']:searchText">
       <td>{{ product.id }}</td>
       <td>{{ product.supplierId }}</td>
       <td>{{ product.name }}</td>
@@ -31,7 +32,7 @@
           <button
             class="btn btn-danger"
             mwlConfirmationPopover
-            [popoverTitle]="popoverTitle"     
+            [popoverTitle]="popoverTitle"
             [popoverMessage]="popoverMessage"
             placement="left"
             (confirm)="deleteProduct(product._id)"

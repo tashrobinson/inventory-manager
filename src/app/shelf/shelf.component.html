@@ -15,7 +15,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let shelf of shelves | filter:searchtext">
+    <tr *ngFor="let shelf of shelves
+      | wildcardSearchFilterPipe:['id','productId','location','status']:searchtext">
       <td>{{ shelf.id }}</td>
       <td>{{ shelf.productId }}</td>
       <td>{{ shelf.location }}</td>

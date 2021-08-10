@@ -25,7 +25,6 @@ import { PasswordPatternDirective } from './directives/password-pattern.directiv
 import { MatchPasswordDirective } from './directives/match-password.directive';
 import { ValidateUserNameDirective } from './directives/validate-user-name.directive';
 import { VerifyPasswordDirective } from './directives/verify-password.directive';
-import { Ng2SearchPipeModule } from "ng2-search-filter";
 import { SidebarModule } from 'ng-sidebar';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
@@ -33,6 +32,7 @@ import { RegisterComponent } from './register/register.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarDirective } from './directives/gravatar.directive';
 import { ConfirmationPopoverModule } from "angular-confirmation-popover";
+import { WildcardSearchFilterPipePipe } from './pipes/wildcard-search-filter-pipe.pipe';
 
 const appRoutes: Routes = [
   {
@@ -173,6 +173,7 @@ const appRoutes: Routes = [
     LoginComponent,
     RegisterComponent,
     GravatarDirective,
+    WildcardSearchFilterPipePipe,
   ],
   imports: [
     BrowserModule,
@@ -185,7 +186,6 @@ const appRoutes: Routes = [
     ConfirmationPopoverModule.forRoot({
       confirmButtonType: 'danger', // set defaults here
     }),
-    Ng2SearchPipeModule,
     SidebarModule.forRoot(),
     ReactiveFormsModule,
     NgbModule

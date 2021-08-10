@@ -14,7 +14,8 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let supplier of suppliers | filter:searchtext">
+    <tr *ngFor="let supplier of suppliers
+      | wildcardSearchFilterPipe:['id','name']:searchtext">
       <td>{{ supplier.id }}</td>
       <td>{{ supplier.name }}</td>
       <td>

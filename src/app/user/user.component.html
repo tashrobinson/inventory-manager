@@ -14,7 +14,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users | filter:searchtext">
+    <tr *ngFor="let user of users | wildcardSearchFilterPipe:['username', 'email']:searchtext">
       <td>{{ user.username }}</td>
       <td>{{ user.email }}</td>
       <td>{{ user.isAdmin }}</td>
