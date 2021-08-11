@@ -1,16 +1,16 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var bodyParser = require('body-parser');
+const express = require('express');
+const path = require('path');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const bodyParser = require('body-parser');
 
-var product = require('./routes/product');
-var supplier = require('./routes/supplier');
-var shelf = require('./routes/shelf');
-var user = require('./routes/user');
-var app = express();
+const product = require('./routes/product');
+const supplier = require('./routes/supplier');
+const shelf = require('./routes/shelf');
+const user = require('./routes/user');
+const app = express();
 
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost/inventory-manager', {
       promiseLibrary: require('bluebird'),
@@ -18,6 +18,8 @@ mongoose.connect('mongodb://localhost/inventory-manager', {
       useUnifiedTopology: true})
   .then(() =>  console.log('connection successful'))
   .catch((err) => console.error(err));
+
+
 
 
 app.use(logger('dev'));
@@ -33,7 +35,21 @@ app.use('/supplier', supplier);
 app.use('/shelf', shelf);
 app.use('/user', user);
 
-// catch 404 and forward to error handler
+const jsonErrorHandler = async (err, req, res, next) => {
+  res.setHeader('Content-Type', 'application/json');
+  res.status(500).send({ error: err });
+}
+
+app.use(jsonErrorHandler);
+
+app.use(function (req, res, next) {
+  res.status(404).send("Sorry can't find that!")
+})
+
+
+
+
+/*// catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
   err.status = 404;
@@ -44,11 +60,12 @@ app.use(function(req, res, next) {
 app.use(function(err, req, res, next) {
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  res.locals.error = err; //req.app.get('env') === 'development' ? err :  err; //{};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+  //res.status(err.status || 500);
+  //res.render('error');
+  next(err);
+});*/
 
 module.exports = app;

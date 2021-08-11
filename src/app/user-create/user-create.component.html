@@ -24,7 +24,7 @@
                 Minimum Username length is 3
           </span>
           <span class="text-danger"
-                *ngIf="username.touched && username.errors?.userNameNotAvailable">
+                *ngIf="duplicateUser">
                 Username is not available
           </span>
         </div>
@@ -49,6 +49,10 @@
           </span>
           <span class="text-danger" *ngIf="(email.touched || userForm.submitted) && (email.errors?.email || email.errors?.pattern)">
                 Enter a valid email address
+          </span>
+          <span class="text-danger"
+                *ngIf="duplicateEmail">
+                Email is already used
           </span>
         </div>
         <div class="form-group">

@@ -53,7 +53,16 @@ export class AccountService {
   }
 
   register(user: User) {
-    return this.http.post(`/user`, user);
+    return new Observable(observer => {
+      this.http.post(`/user`, user).subscribe( (result) => {
+        console.log(`account.service register result ${JSON.stringify(result)}`)
+        observer.next(result);
+      },
+        (error) => {
+          console.log(`account.service register error ${JSON.stringify(error)}`)
+          observer.error(error);
+      })
+    });
   }
 
   getAll() {

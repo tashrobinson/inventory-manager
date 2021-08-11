@@ -16,10 +16,13 @@ export class UserCreateComponent implements OnInit{
 
   private currentUser: User;
   userIsAdmin: boolean;
+  duplicateUser: boolean;
+  duplicateEmail: boolean;
 
   userModel = new UserRegister();
   user: any = {};
   emailPattern = "^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+
 
 
   constructor(private http: HttpClient, private router: Router,
@@ -36,6 +39,9 @@ export class UserCreateComponent implements OnInit{
 
   saveUser() {
 
+    this.duplicateUser = false;
+    this.duplicateEmail = false;
+
     if(this.userModel.password === this.userModel.confirmPassword){
       this.user.username = this.userModel.username;
       this.user.email = this.userModel.email;
@@ -48,14 +54,32 @@ export class UserCreateComponent implements OnInit{
       this.user.passwordHash = Md5.hashStr(this.userModel.password.trim().toLowerCase());
     }
 
-    //this.http.post('/user', this.user)
     this.accountService.register(this.user)
       .subscribe(res => {
-          let id = res['_id'];
+          //console.log(`user-create register ${JSON.stringify(res)}`);
+          const id = res['_id'];
           this.router.navigate(['/user-details', id]);
         },
         (err) => {
-          console.log(err);
+          //console.log(`user-create error ${JSON.stringify(err)}`);
+          const theError = err.error.error;
+          if (theError.code === 11000) //duplicate key error
+          {
+            const errorField = theError.keyPattern;
+
+            for (let key in errorField) {
+              //if the item has the key property
+              if (errorField.hasOwnProperty(key)){
+                //console.log(`user-create error field ${key}`)
+                if (key === "username"){
+                  this.duplicateUser = true;
+                }
+                if (key === "email"){
+                  this.duplicateEmail = true;
+                }
+              }
+            }
+          }
         }
       );
   }

@@ -65,7 +65,10 @@ router.post('/authenticate', function(req, res, next) {
 /* SAVE User */
 router.post('/', function(req, res, next) {
   User.create(req.body, function (err, post) {
-    if (err) return next(err);
+    if (err) {
+      console.log(`user create error: ${JSON.stringify(err)} `)
+      return next(err);
+    }
     res.json(post);
   });
 });
