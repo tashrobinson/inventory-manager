@@ -43,7 +43,10 @@ router.get('/product/:id', function(req, res, next) {
 /* SAVE Shelf */
 router.post('/', function(req, res, next) {
   Shelf.create(req.body, function (err, post) {
-    if (err) return next(err);
+    if (err) {
+      console.log(`shelf create error: ${JSON.stringify(err)} `)
+      return next(err);
+    }
     res.json(post);
   });
 });

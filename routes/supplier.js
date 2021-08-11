@@ -23,7 +23,10 @@ router.get('/:id', function(req, res, next) {
 /* SAVE Supplier */
 router.post('/', function(req, res, next) {
   Supplier.create(req.body, function (err, post) {
-    if (err) return next(err);
+    if (err) {
+      console.log(`supplier create error: ${JSON.stringify(err)} `)
+      return next(err);
+    }
     res.json(post);
   });
 });
