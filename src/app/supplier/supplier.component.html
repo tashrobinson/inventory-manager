@@ -19,17 +19,27 @@
       <td>{{ supplier.id }}</td>
       <td>{{ supplier.name }}</td>
       <td>
-        <a [routerLink]="['/supplier-details', supplier._id]" class="btn btn-info">Show Detail</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a></ng-container>
+        <a [routerLink]="['/supplier-details', supplier._id]" class="btnDetail">
+          <i class="fas fa-eye"></i>
+          &nbsp;Show Detail
+        </a>
         <ng-container *ngIf="userIsAdmin">
-          <button class="btn btn-danger"
+          <a [routerLink]="['/supplier-edit', supplier._id]" class="btnEdit">
+            <i class="fas fa-pencil-alt"></i>
+            &nbsp;Edit
+          </a>
+        </ng-container>
+        <ng-container *ngIf="userIsAdmin">
+          <button
+            class="btnDelete"
             mwlConfirmationPopover
             [popoverTitle]="popoverTitle"
             [popoverMessage]="popoverMessage"
             placement="left"
             (confirm)="deleteSupplier(supplier._id)"
             (cancel)="cancel()">
-          Delete
+            <span class="fas fa-trash" aria-hidden="true"></span>
+            &nbsp;Delete
           </button>
         </ng-container>
       </td>
@@ -38,8 +48,9 @@
   </table>
     <!-- Add Button -->
   <ng-container *ngIf="userIsAdmin">
-    <button [routerLink]="['/supplier-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
-      Add Supplier
+    <button [routerLink]="['/supplier-create']" class="btnAdd">
+      <span class="fas fa-plus" aria-hidden="true"></span>
+      &nbsp;Add Supplier
     </button>
   </ng-container>
 </div>

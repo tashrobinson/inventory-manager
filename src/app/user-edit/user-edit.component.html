@@ -112,8 +112,14 @@
         </div>
         <br />
         <div class="form-group">
-          <button type="submit" class="btn btn-success" [disabled]="!userForm.form.valid">Update</button>
-          <a [routerLink]="['/userlist']" class="btn btn-info">Cancel</a>
+          <button type="submit" class="btnUpdate" [disabled]="!userForm.form.valid">
+            <span class="fas fa-save"></span>
+            &nbsp;Update
+          </button>
+          <a [routerLink]="['/userlist']" class="btnCancel">
+            <i class="fas fa-window-close"></i>
+            &nbsp;Cancel
+          </a>
         </div>
       </form>
     </div>

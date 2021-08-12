@@ -22,18 +22,27 @@
       <td>{{ shelf.location }}</td>
       <td>{{ shelf.status }}</td>
       <td>
-        <a [routerLink]="['/shelf-details', shelf._id]" class="btn btn-info">Show Detail</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/shelf-edit', shelf._id]" class="btn btn-success">Edit</a></ng-container>
+        <a [routerLink]="['/shelf-details', shelf._id]" class="btnDetail">
+          <i class="fas fa-eye"></i>
+          &nbsp;Show Detail
+        </a>
+        <ng-container *ngIf="userIsAdmin">
+          <a [routerLink]="['/shelf-edit', shelf._id]" class="btnEdit">
+            <i class="fas fa-pencil-alt"></i>
+            &nbsp;Edit
+          </a>
+        </ng-container>
         <ng-container *ngIf="userIsAdmin">
           <button
-          class="btn btn-danger"
-          mwlConfirmationPopover
-          [popoverTitle]="popoverTitle"
-          [popoverMessage]="popoverMessage"
-          placement="left"
-          (confirm)="deleteShelf(shelf._id)"
-          (cancel)="cancel()">
-          Delete
+            class="btnDelete"
+            mwlConfirmationPopover
+            [popoverTitle]="popoverTitle"
+            [popoverMessage]="popoverMessage"
+            placement="left"
+            (confirm)="deleteShelf(shelf._id)"
+            (cancel)="cancel()">
+            <span class="fas fa-trash" aria-hidden="true"></span>
+            &nbsp;Delete
           </button>
         </ng-container>
       </td>
@@ -42,8 +51,9 @@
   </table>
       <!-- Add Button -->
   <ng-container *ngIf="userIsAdmin">
-    <button [routerLink]="['/shelf-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
-      Add Shelf
+    <button [routerLink]="['/shelf-create']" class="btnAdd">
+      <span class="fas fa-plus" aria-hidden="true"></span>
+      &nbsp;Add Shelf
     </button>
   </ng-container>
 </div>

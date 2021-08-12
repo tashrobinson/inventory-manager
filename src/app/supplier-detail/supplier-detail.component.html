@@ -11,19 +11,29 @@
   <br />
   <div class="row">
     <div class="col-md-12">
-      <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/supplier-edit', supplier._id]" class="btn btn-success">Edit</a></ng-container>
       <ng-container *ngIf="userIsAdmin">
-        <button class="btn btn-danger"
+        <a [routerLink]="['/supplier-edit', supplier._id]" class="btnEdit">
+          <i class="fas fa-pencil-alt"></i>
+          &nbsp;Edit
+        </a>
+      </ng-container>
+      <ng-container *ngIf="userIsAdmin">
+        <button
+          class="btnDelete"
           mwlConfirmationPopover
           [popoverTitle]="popoverTitle"
           [popoverMessage]="popoverMessage"
           placement="left"
           (confirm)="deleteSupplier(supplier._id)"
           (cancel)="cancel()">
-          Delete
+          <span class="fas fa-trash" aria-hidden="true"></span>
+          &nbsp;Delete
         </button>
       </ng-container>
-      <a [routerLink]="['/supplierlist']" class="btn btn-info">Cancel</a>
+      <a [routerLink]="['/supplierlist']" class="btnCancel">
+        <i class="fas fa-arrow-left"></i>
+        &nbsp;Back
+      </a>
     </div>
   </div>
 </div>

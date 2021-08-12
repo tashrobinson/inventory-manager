@@ -26,8 +26,16 @@
         </div>
         <br />
         <div class="form-group">
-          <ng-container *ngIf="userIsAdmin"><button type="submit" class="btn btn-success" [disabled]="!shelfForm.form.valid">Update</button></ng-container>
-          <a [routerLink]="['/shelflist']" class="btn btn-info">Cancel</a>
+          <ng-container *ngIf="userIsAdmin">
+            <button type="submit" class="btnUpdate" [disabled]="!shelfForm.form.valid">
+              <span class="fas fa-save"></span>
+              &nbsp;Update
+            </button>
+          </ng-container>
+          <a [routerLink]="['/shelflist']" class="btnCancel">
+            <i class="fas fa-window-close"></i>
+            &nbsp;Cancel
+          </a>
         </div>
       </form>
     </div>

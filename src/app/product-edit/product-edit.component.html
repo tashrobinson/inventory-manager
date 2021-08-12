@@ -33,8 +33,16 @@
         </div>
         <br />
         <div class="form-group">
-          <ng-container *ngIf="userIsAdmin"><button type="submit" class="btn btn-success" [disabled]="!productForm.form.valid">Update</button></ng-container>
-          <a [routerLink]="['/productlist']" class="btn btn-info">Cancel</a>
+          <ng-container *ngIf="userIsAdmin">
+            <button type="submit" class="btnUpdate" [disabled]="!productForm.form.valid">
+              <span class="fas fa-save"></span>
+              &nbsp;Update
+            </button>
+          </ng-container>
+          <a [routerLink]="['/productlist']" class="btnCancel">
+            <i class="fas fa-window-close"></i>
+            &nbsp;Cancel
+          </a>
         </div>
       </form>
     </div>

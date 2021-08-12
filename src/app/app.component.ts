@@ -29,6 +29,7 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     this.current = this.router.url;
+    if (this.current === '/') this.current = '/productlist';
     console.log("NavBar current route: " + this.current);
     this._opened = true;
   }

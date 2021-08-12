@@ -2,8 +2,7 @@
   <!--<app-nav-bar></app-nav-bar>-->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <h1 class="title is-italic has-text-black">Product List </h1>
-  <input type="text" class="form-control" [(ngModel)]="searchText"
-         placeholder="Search">
+  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
   <table class="table is-bordered is-striped is-fullwidth has-background-info-light mt-3">
     <thead>
     <tr>
@@ -26,19 +25,27 @@
       <td>{{ product.price | currency }}</td>
       <td>{{ product.qty }}</td>
       <td>
-        <a [routerLink]="['/product-details', product._id]" class="btn btn-info">Show Detail</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a></ng-container>
+        <a [routerLink]="['/product-details', product._id]" class="btnDetail">
+          <i class="fas fa-eye"></i>
+          &nbsp;Show Detail
+        </a>
+        <ng-container *ngIf="userIsAdmin">
+          <a [routerLink]="['/product-edit', product._id]" class="btnEdit">
+            <i class="fas fa-pencil-alt"></i>
+            &nbsp;Edit
+          </a>
+        </ng-container>
         <ng-container *ngIf="userIsAdmin">
           <button
-            class="btn btn-danger"
+            class="btnDelete"
             mwlConfirmationPopover
             [popoverTitle]="popoverTitle"
             [popoverMessage]="popoverMessage"
             placement="left"
             (confirm)="deleteProduct(product._id)"
-            (cancel)="cancel()"
-          >
-            Delete
+            (cancel)="cancel()">
+            <span class="fas fa-trash" aria-hidden="true"></span>
+            &nbsp;Delete
           </button>
         </ng-container>
       </td>
@@ -47,8 +54,9 @@
   </table>
       <!-- Add Button -->
   <ng-container *ngIf="userIsAdmin">
-    <button [routerLink]="['/product-create']" class="button is-rounded has-text-white mr-6" style="float:right; background-color:#6f8bab ;">
-      Add Product
+    <button [routerLink]="['/product-create']" class="btnAdd">
+      <span class="fas fa-plus" aria-hidden="true"></span>
+      &nbsp;Add Product
     </button>
   </ng-container>
 </div>

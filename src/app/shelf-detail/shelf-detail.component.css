@@ -1,0 +1,48 @@
+.btnEdit {
+  background-color: #00e64d;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.btnCancel {
+  background-color: #6F8BAB;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  font-size: 16px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+
+.btnDelete {
+  background-color: #f52424;
+  border: none;
+  color: white;
+  padding: 8px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+/* Darker background on mouse-over */
+.btnEdit:hover {
+  background-color: #00b33c ;
+}
+
+.btnCancel:hover {
+  background-color: #627a96 ;
+}
+
+.btnDelete:hover {
+  background-color: #db0a0a;
+}
+
+a, a:hover, a:focus, a:active {
+  text-decoration: none;
+  color: inherit;
+}
