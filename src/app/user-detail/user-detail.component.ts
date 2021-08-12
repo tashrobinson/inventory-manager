@@ -14,7 +14,7 @@ export class UserDetailComponent implements OnInit {
   private currentUser: User;
   userIsAdmin: boolean;
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
   user: any = {};
 
   constructor(private router: Router, private route: ActivatedRoute, private http: HttpClient,

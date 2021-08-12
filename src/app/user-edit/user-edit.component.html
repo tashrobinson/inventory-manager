@@ -58,13 +58,13 @@
                  name="oldPass" id="oldPass"
                  [(ngModel)]="userModel.oldPassword"
                  #oldPassword="ngModel"
-                 required>
+                 [attr.required]="password.value != ''">
           <span class="text-danger"
-                *ngIf="(oldPassword.touched || userForm.submitted) && oldPassword.errors?.required">
+                *ngIf="passwordInvalid || (password.value && password.value != '')">
                 Old Password is required
           </span>
           <span class="text-danger"
-                *ngIf="oldPassword.touched && oldPassword.errors?.passwordMismatch">
+                *ngIf="(password.value != '') && oldPassword.touched && oldPassword.errors?.passwordMismatch">
                 Old Password is not correct
           </span>
           <input type="hidden" name="passHash" [(ngModel)]="userModel.oldHash" >
@@ -76,12 +76,7 @@
                  name="password" id="password"
                  [(ngModel)]="userModel.password"
                  #password="ngModel"
-                 appPasswordPattern
-                 required />
-          <span class="text-danger"
-                *ngIf="(password.touched || userForm.submitted) && password.errors?.required">
-                Password is required
-          </span>
+                 appPasswordPattern />
           <span class="text-danger" *ngIf="password.touched && password.errors?.invalidPassword">
                 Password should have minimum 8 characters, at least 1 uppercase letter, 1 lowercase
                 letter and 1 number
@@ -94,9 +89,9 @@
                  name="confirmPassword" id="confirmPassword"
                  [(ngModel)]="userModel.confirmPassword"
                  #confirmPassword="ngModel"
-                 required>
+                 [attr.required]="password.value != ''" >
           <span class="text-danger"
-                *ngIf="(confirmPassword.touched || userForm.submitted) && confirmPassword.errors?.required">
+                *ngIf="(password.value != '') && (confirmPassword.touched || userForm.submitted) && confirmPassword.errors?.required">
                 Confirm Password is required
           </span>
           <span class="text-danger"

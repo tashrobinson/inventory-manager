@@ -18,7 +18,7 @@ export class UserComponent implements OnInit {
   searchtext: string;
   users: any;
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
 
   constructor(private router: Router,
               private http: HttpClient,

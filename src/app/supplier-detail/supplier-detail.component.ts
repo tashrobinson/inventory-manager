@@ -15,7 +15,7 @@ export class SupplierDetailComponent implements OnInit {
   private user: User;
   userIsAdmin: boolean;
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
 
   supplier: any = {};
 

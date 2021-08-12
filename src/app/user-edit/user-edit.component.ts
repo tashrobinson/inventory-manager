@@ -16,7 +16,7 @@ export class UserEditComponent implements OnInit {
 
   private currentUser: User;
   userIsAdmin: boolean;
-
+  passwordInvalid: boolean;
   userModel = new UserRegister();
   user: any = {};
 
@@ -46,20 +46,37 @@ export class UserEditComponent implements OnInit {
 
   updateUser(id) {
 
-    if(this.userModel.password === this.userModel.confirmPassword){
-      this.user.username = this.userModel.username;
-      this.user.email = this.userModel.email;
-      if (this.userModel.isAdmin){
-        this.user.isAdmin = true;
-      } //kludge to be false if its unset
-      else {
-        this.user.isAdmin = false
-      };
-      this.user.passwordHash = Md5.hashStr(this.userModel.password.trim().toLowerCase());
+    this.passwordInvalid = false;
+
+    if (this.userModel.password && this.userModel.password !== '') {
+      //if the old password is correct, update to the new password
+      if (this.userModel.oldPassword && this.userModel.oldPassword !== '') {
+        if (Md5.hashStr(this.userModel.oldPassword.trim().toLowerCase()) === this.user.passwordHash) {
+          if (this.userModel.password === this.userModel.confirmPassword) {
+            this.user.passwordHash = Md5.hashStr(this.userModel.password.trim().toLowerCase());
+          }
+        } else {
+          console.log("Password invalid");
+          this.passwordInvalid = true;
+          return;
+        }
+      }else{
+        console.log("Password invalid");
+        this.passwordInvalid = true;
+        return;
+      }
     }
 
-    //this.http.put('/user/'+id, this.user)
-    console.log(`User edit - updating ${id} ${JSON.stringify(this.user)}`)
+    this.user.username = this.userModel.username;
+    this.user.email = this.userModel.email;
+    if (this.userModel.isAdmin){
+      this.user.isAdmin = true;
+    } //kludge to be false if its unset
+    else {
+      this.user.isAdmin = false
+    };
+
+    console.log(`User edit - updating ${id} ${JSON.stringify(this.user)}`);
     this.accountService.update(id, this.user)
       .subscribe(res => {
           let id = res['_id'];

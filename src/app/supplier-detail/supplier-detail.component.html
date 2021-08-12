@@ -1,13 +1,19 @@
 <div class="container">
-  <h1>{{ supplier.name }}</h1>
-  <dl class="list">
-    <dt>ID</dt>
-    <dd>{{ supplier.id }}</dd>
-    <dt>Name</dt>
-    <dd>{{ supplier.name }}</dd>
-    <dt>Update Date</dt>
-    <dd>{{ supplier.updated_date | date:'short' }}</dd>
-  </dl>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <h1 class="title is-italic has-text-black">Supplier Detail </h1>
+
+  <div class="card">
+    <h2 class="card-header-title">{{ supplier.name }}</h2>
+    <dl class="list card-content">
+      <dt>ID</dt>
+      <dd>{{ supplier.id }}</dd>
+      <dt>Name</dt>
+      <dd>{{ supplier.name }}</dd>
+      <dt>Update Date</dt>
+      <dd>{{ supplier.updated_date | date:'short' }}</dd>
+    </dl>
+  </div>
+
   <br />
   <div class="row">
     <div class="col-md-12">
@@ -36,4 +42,5 @@
       </a>
     </div>
   </div>
+
 </div>

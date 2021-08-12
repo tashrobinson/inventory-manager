@@ -34,8 +34,4 @@ export class HeaderComponent implements OnInit {
      this.accountService.logout();
   }
 
-  profileClick(){
-    console.log("Profile was clicked!")
-  }
-
 }

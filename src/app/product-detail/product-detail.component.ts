@@ -16,7 +16,7 @@ export class ProductDetailComponent implements OnInit {
   shelf: any = {};
   userIsAdmin: boolean;
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
   product: any = {};
 
   constructor(private router: Router,

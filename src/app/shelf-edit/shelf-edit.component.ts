@@ -18,6 +18,15 @@ export class ShelfEditComponent implements OnInit {
   products: any;
   shelf: any = {};
 
+  statusOptions = [
+    'EMPTY - UNUSED',
+    'OUT OF STOCK',
+    'ON ORDER',
+    'LOW STOCK - RE-ORDER',
+    'IN STOCK',
+    'RESERVED'
+  ];
+
   constructor(private http: HttpClient,
               private router: Router,
               private route: ActivatedRoute,

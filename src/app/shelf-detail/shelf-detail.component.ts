@@ -17,7 +17,7 @@ export class ShelfDetailComponent implements OnInit {
   shelf: any = {};
   product: any = {};
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
 
   constructor(private router: Router,
               private route: ActivatedRoute,

@@ -17,7 +17,7 @@ export class ShelfComponent implements OnInit {
   shelves: any;
   products: any;
   popoverTitle = 'Are you sure?';
-  popoverMessage = 'Are you really <b>sure</b> you want to do this?';
+  popoverMessage = 'Are you really <b>sure</b> you want to do this?<br />';
 
   constructor(private http: HttpClient, private accountService: AccountService) {
     this.accountService.user.subscribe(x => {

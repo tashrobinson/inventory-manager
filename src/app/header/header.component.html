@@ -8,9 +8,8 @@ outline: 7px solid #2C4378; margin-bottom: 10px;">
       <img appGravatar [email]="gravatarEmail" width="50" height="50" >
     </button>
     <div ngbDropdownMenu aria-labelledby="dropdownManual">
-      <a [routerLink]="['/user-details', userID]" ngbDropdownItem>Profile</a>
-      <button (click)="logoutClick()" ngbDropdownItem>Logout</button>
-      <button ngbDropdownItem></button>
+      <a [routerLink]="['/user-details', userID]" ngbDropdownItem><i class="fas fa-user"></i>&nbsp;Profile</a>
+      <button (click)="logoutClick()" ngbDropdownItem><span class="fas fa-sign-out-alt"></span>&nbsp;Logout</button>
     </div>
 
     <i class="user">{{username}}</i>

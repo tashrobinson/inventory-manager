@@ -46,3 +46,22 @@ a, a:hover, a:focus, a:active {
   text-decoration: none;
   color: inherit;
 }
+
+dl {
+  width: 75%;
+  overflow: hidden;
+  padding: 1.5rem;
+  margin: 0
+}
+dt {
+  float: left;
+  width: 34%;
+  padding: 0;
+  margin: 0
+}
+dd {
+  float: left;
+  width: 66%;
+  padding: 0;
+  margin: 0
+}

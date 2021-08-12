@@ -1,25 +1,37 @@
 <div class="container">
-  <h1>{{ shelf.location }}</h1>
-  <dl class="list">
-    <dt>ID</dt>
-    <dd>{{ shelf.id }}</dd>
-    <dt>Product ID</dt>
-    <dd>{{ shelf.productId }}</dd>
-    <dt>Location</dt>
-    <dd>{{ shelf.location }}</dd>
-    <dt>Status</dt>
-    <dd>{{ shelf.status }}</dd>
-    <dt>Update Date</dt>
-    <dd>{{ shelf.updated_date | date:'short' }}</dd>
-    <ng-container *ngIf="product._id">
-    <dt>Product Name</dt>
-      <dd>{{ product.name }}</dd>
-      <dt>Product Part</dt>
-      <dd>{{ product.part }}</dd>
-      <dt>Product Quantity</dt>
-      <dd>{{ product.qty }}</dd>
-    </ng-container>
-  </dl>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <h1 class="title is-italic has-text-black">Shelf Detail</h1>
+
+  <div class="card">
+    <h2 class="card-header-title">{{ shelf.location }}</h2>
+    <dl class="list card-content">
+      <dt>ID</dt>
+      <dd>{{ shelf.id }}</dd>
+      <dt>Product ID</dt>
+      <dd>{{ shelf.productId }}</dd>
+      <dt>Location</dt>
+      <dd>{{ shelf.location }}</dd>
+      <dt>Status</dt>
+      <dd>{{ shelf.status }}</dd>
+      <dt>Update Date</dt>
+      <dd>{{ shelf.updated_date | date:'short' }}</dd>
+    </dl>
+  </div>
+
+  <ng-container *ngIf="product._id">
+    <div class="card">
+      <h2 class="card-header-title">Product {{ product.name }}</h2>
+      <dl class="list card-content">
+        <dt>Product Name</dt>
+        <dd>{{ product.name }}</dd>
+        <dt>Product Part</dt>
+        <dd>{{ product.part }}</dd>
+        <dt>Product Quantity</dt>
+        <dd>{{ product.qty }}</dd>
+      </dl>
+    </div>
+  </ng-container>
+
   <br />
   <div class="row">
     <div class="col-md-12">
@@ -48,4 +60,5 @@
       </a>
     </div>
   </div>
+
 </div>

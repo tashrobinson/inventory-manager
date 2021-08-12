@@ -19,6 +19,15 @@ export class ShelfCreateComponent implements OnInit {
   duplicateId: boolean;
   duplicateLocation: boolean;
 
+  statusOptions = [
+    'EMPTY - UNUSED',
+    'OUT OF STOCK',
+    'ON ORDER',
+    'LOW STOCK - RE-ORDER',
+    'IN STOCK',
+    'RESERVED'
+  ];
+
   constructor(private http: HttpClient, private router: Router, private accountService: AccountService) {
     this.accountService.user.subscribe(x => {
       this.user = x;
