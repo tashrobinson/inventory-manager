@@ -56,6 +56,25 @@
   background-color: #db0a0a;
 }
 
+@media screen and (max-width: 600px) {
+  .mobileHide {
+    visibility: hidden;
+  }
+
+  .mobileFontSize{
+    font-size: 25px;
+  }
+
+} 
+
+@media screen and (min-width: 600px) {
+
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+}
 .table__wrapper {
   overflow-x: auto;
   overflow: auto;
