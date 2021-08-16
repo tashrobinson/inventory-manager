@@ -56,3 +56,12 @@
   background-color: #db0a0a;
 }
 
+.table__wrapper {
+  overflow-x: auto;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.suppliers {
+  width: 100%;
+}

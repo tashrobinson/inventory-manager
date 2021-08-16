@@ -75,3 +75,12 @@
   }
 
 }
+.table__wrapper {
+  overflow-x: auto;
+  overflow: auto;
+  max-height: 500px;
+}
+
+.products {
+  width: 100%;
+}
