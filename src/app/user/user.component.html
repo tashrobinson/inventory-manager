@@ -25,12 +25,12 @@
               <td>
                 <a [routerLink]="['/user-details', user._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
-                  &nbsp;Show Detail
+                  <span class="buttonText">&nbsp;Show Detail</span>
                 </a>
                 <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)">
                   <a [routerLink]="['/user-edit', user._id]" class="btnEdit">
                     <i class="fas fa-pencil-alt"></i>
-                    &nbsp;Edit
+                    <span class="buttonText">&nbsp;Edit</span>
                   </a>
                 </ng-container>
                 <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)">
@@ -42,7 +42,7 @@
                     (confirm)="deleteUser(user._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>
-                    &nbsp;Delete
+                    <span class="buttonText">&nbsp;Delete</span>
                   </button>
                 </ng-container>
             </tr>
@@ -57,7 +57,7 @@
   <ng-container *ngIf="userIsAdmin">
     <button [routerLink]="['/user-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-      &nbsp;Add User
+      <span class="buttonText">&nbsp;Add User</span>
     </button>
   </ng-container>
 </div>
