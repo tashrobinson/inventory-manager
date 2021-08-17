@@ -29,7 +29,7 @@
               <td>{{ product.price | currency }}</td>
               <td>{{ product.qty }}</td>
 
-              <td class="mobileHide"> <!-- TD Action Buttons hidden on mobile-->
+              <td> <!-- TD Action Buttons hidden on mobile-->
                 <!-- detail btn --> 
                 <a [routerLink]="['/product-details', product._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
@@ -64,20 +64,13 @@
       </div>
     </div>
   </div>
-      <!-- Add Button DESKTOP-->
+
   <ng-container *ngIf="userIsAdmin">
-    <button [routerLink]="['/product-create']" class="btnAdd mobileHide">
+    <button [routerLink]="['/product-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-      <span class="buttonText">&nbsp;Add Product</span>
+      <span>&nbsp;Add Product</span>
     </button>
   </ng-container>
 
- <!-- Add Button MOBILE -->
-  <ng-container *ngIf="userIsAdmin">
-    <button [routerLink]="['/product-create']" class="btnAddMobile desktopHide">
-      <span class="fas fa-plus" aria-hidden="true"></span>
-      <span class="buttonText">&nbsp;Add Product</span>
-    </button>
-  </ng-container>
 </div>
 

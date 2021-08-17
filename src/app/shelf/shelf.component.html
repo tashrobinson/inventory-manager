@@ -15,7 +15,7 @@
               <th>Product ID</th>
               <th>Location</th>
               <th>Status</th>
-              <th>Action</th>
+              <th class="mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -61,7 +61,7 @@
   <ng-container *ngIf="userIsAdmin">
     <button [routerLink]="['/shelf-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-      <span class="buttonText">&nbsp;Add Shelf</span>
+      <span>&nbsp;Add Shelf</span>
     </button>
   </ng-container>
 </div>

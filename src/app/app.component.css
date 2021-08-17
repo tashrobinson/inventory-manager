@@ -10,6 +10,13 @@ ng-sidebar-container{
   margin-right:5px;
 }
 
+.mobileNav{
+  position: relative;
+  left: 50%;
+  width: 200px;
+  margin-left: -100px;
+}
+
 .btnNavSelected {
   background-color: #558fe5;
   border: none;
@@ -64,7 +71,8 @@ ng-sidebar-container{
     width: 300px;
   }
 
-} 
+}
+
 
 /* Desktop */ 
 @media screen and (min-width: 600px) {

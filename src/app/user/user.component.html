@@ -14,7 +14,7 @@
               <th>Username</th>
               <th>Email</th>
               <th>Is Admin?</th>
-              <th>Action</th>
+              <th class="mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -57,7 +57,7 @@
   <ng-container *ngIf="userIsAdmin">
     <button [routerLink]="['/user-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-      <span class="buttonText">&nbsp;Add User</span>
+      <span>&nbsp;Add User</span>
     </button>
   </ng-container>
 </div>

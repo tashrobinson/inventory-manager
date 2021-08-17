@@ -1,4 +1,4 @@
-import {Component, OnInit, ChangeDetectorRef} from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, HostListener} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {AccountService} from "./services/account.service";
 import {User} from "../../models/User";
@@ -17,6 +17,7 @@ export class AppComponent implements OnInit{
   _opened: boolean;
   current: string;
   register: boolean;
+  smallScreen: boolean;
 
   constructor(private router: Router, private route: ActivatedRoute,
               private ref: ChangeDetectorRef, private accountService: AccountService) {
@@ -27,11 +28,22 @@ export class AppComponent implements OnInit{
     this.accountService.getLogoutEvent().subscribe(() => this.logoutEvent());
   }
 
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.configureSideNav()
+  }
+
   ngOnInit(): void {
     this.current = this.router.url;
     if (this.current === '/') this.current = '/productlist';
     console.log("NavBar current route: " + this.current);
+    this.configureSideNav();
     this._opened = true;
+  }
+
+  configureSideNav() {
+    this.smallScreen = window.innerWidth < 840 ? true : false
+    this._opened = !this.smallScreen;
   }
 
   navigate(page){

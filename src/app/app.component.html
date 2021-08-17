@@ -6,28 +6,45 @@
   <div *ngIf="loggedIn; then thenBlock else elseBlock"></div>
   <ng-template #thenBlock>
     <app-header></app-header>
-    <ng-sidebar-container>
 
-      <!-- A sidebar -->
-      <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
-        <div class="nav mobileHide">
-          <div><button  [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
-                       (click)="navigate('/productlist')">Products</button></div>
-          <div><button [ngClass]="current === '/supplierlist' ? 'btnNavSelected' : 'btnNav'"
-                       (click)="navigate('/supplierlist')">Suppliers</button></div>
-          <div><button [ngClass]="current === '/shelflist' ? 'btnNavSelected' : 'btnNav'"
-                       (click)="navigate('/shelflist')">Shelves</button></div>
-          <div><button [ngClass]="current === '/userlist' ? 'btnNavSelected' : 'btnNav'"
-                       (click)="navigate('/userlist')">Users</button></div>
+    <div *ngIf="!smallScreen; then sideNav else topNav"></div>
+
+    <ng-template #sideNav>
+      <ng-sidebar-container>
+        <!-- A sidebar -->
+        <ng-sidebar [(opened)]="_opened" mode="push">
+          <div class="nav">
+            <div><button  [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
+                         (click)="navigate('/productlist')">Products</button></div>
+            <div><button [ngClass]="current === '/supplierlist' ? 'btnNavSelected' : 'btnNav'"
+                         (click)="navigate('/supplierlist')">Suppliers</button></div>
+            <div><button [ngClass]="current === '/shelflist' ? 'btnNavSelected' : 'btnNav'"
+                         (click)="navigate('/shelflist')">Shelves</button></div>
+            <div><button [ngClass]="current === '/userlist' ? 'btnNavSelected' : 'btnNav'"
+                         (click)="navigate('/userlist')">Users</button></div>
+          </div>
+        </ng-sidebar>
+        <!-- Page content -->
+        <div ng-sidebar-content>
+          <router-outlet></router-outlet>
         </div>
-      </ng-sidebar>
-
-
-      <!-- Page content -->
-      <div ng-sidebar-content>
-        <router-outlet></router-outlet>
+      </ng-sidebar-container>
+    </ng-template>
+    <ng-template #topNav>
+      <!-- stacked nav at top -->
+      <div class="mobileNav">
+        <div><button [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
+                      (click)="navigate('/productlist')">Products</button></div>
+        <div><button [ngClass]="current === '/supplierlist' ? 'btnNavSelected' : 'btnNav'"
+                     (click)="navigate('/supplierlist')">Suppliers</button></div>
+        <div><button [ngClass]="current === '/shelflist' ? 'btnNavSelected' : 'btnNav'"
+                     (click)="navigate('/shelflist')">Shelves</button></div>
+        <div><button [ngClass]="current === '/userlist' ? 'btnNavSelected' : 'btnNav'"
+                     (click)="navigate('/userlist')">Users</button></div>
       </div>
-    </ng-sidebar-container>
+      <!-- page content -->
+      <router-outlet></router-outlet>
+    </ng-template>
   </ng-template>
   <ng-template #elseBlock>
       <app-login (loginEvent)="login($event)" (registerEvent)="showRegister()"></app-login>

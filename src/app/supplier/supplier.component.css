@@ -1,47 +1,3 @@
-.btnEdit {
-  background-color: #00e64d;
-  border: none;
-  color: white;
-  padding: 8px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 5px;
-  float: left;
-}
-
-.btnDetail {
-  background-color: #6F8BAB;
-  border: none;
-  color: white;
-  padding: 8px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 5px;
-  float: left;
-}
-
-.btnDelete {
-  background-color: #f52424;
-  border: none;
-  color: white;
-  padding: 8px 10px;
-  font-size: 15px;
-  cursor: pointer;
-  margin: 5px;
-  float: left;
-}
-
-.btnAdd {
-  background-color: #558fe5;
-  border: none;
-  color: white;
-  padding: 8px 10px;
-  font-size: 16px;
-  cursor: pointer;
-  margin: 5px;
-  float: right;
-}
-
 /* Darker background on mouse-over */
 .btnEdit:hover {
   background-color: #00b33c ;
@@ -68,3 +24,234 @@
 .suppliers {
   width: 100%;
 }
+
+/* Mobile  */
+@media screen and (max-width: 600px) {
+  .mobileHide {
+    visibility: hidden;
+    width: 10px;
+  }
+
+  .mobileFontSize{
+    font-size: 25px;
+  }
+
+  th, td {
+    font-size: 12px;
+  }
+
+  .mobileTableSize{
+    width: 100%;
+    height: auto;
+  }
+
+  .centerTextMobile{
+    margin: auto;
+    width: 50%;
+  }
+
+  .btnEdit {
+    background-color: #00e64d;
+    border: none;
+    color: white;
+    padding: 3px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDetail {
+    background-color: #6F8BAB;
+    border: none;
+    color: white;
+    padding: 3px 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDelete {
+    background-color: #f52424;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnAdd{
+    background-color: #558fe5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .buttonText {
+    display: none;
+  }
+
+  .table__wrapper {
+    overflow-x: auto;
+    overflow: auto;
+    max-height: 500px;
+    max-width: 500px;
+  }
+
+}
+
+@media screen and (max-width:850px) and (min-width:600px) {
+  .desktopHide{
+    visibility: hidden;
+    width: 10px;
+  }
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  .desktopTableSize{
+    width: 100%;
+  }
+
+  th, td {
+    font-size: 14px;
+  }
+
+  .btnEdit {
+    background-color: #00e64d;
+    border: none;
+    color: white;
+    padding: 3px 7px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDetail {
+    background-color: #6F8BAB;
+    border: none;
+    color: white;
+    padding: 3px 6px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDelete {
+    background-color: #f52424;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnAdd{
+    background-color: #558fe5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .buttonText {
+    display: none;
+  }
+
+  .table__wrapper {
+    overflow-x: auto;
+    overflow: auto;
+    max-height: 500px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 850px) {
+  .desktopHide{
+    visibility: hidden;
+    width: 10px;
+  }
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  .desktopTableSize{
+    width: 100%;
+  }
+
+  th, td {
+    font-size: 16px;
+  }
+
+  .btnEdit {
+    background-color: #00e64d;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDetail {
+    background-color: #6F8BAB;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDelete {
+    background-color: #f52424;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnAdd {
+    background-color: #558fe5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+  }
+
+  .buttonText {
+    display: inline;
+  }
+
+  .table__wrapper {
+    overflow-x: auto;
+    overflow: auto;
+    max-height: 500px;
+  }
+
+}
+

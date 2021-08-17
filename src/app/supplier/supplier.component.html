@@ -14,7 +14,7 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th>Action</th>
+              <th class="mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -58,7 +58,7 @@
   <ng-container *ngIf="userIsAdmin">
     <button [routerLink]="['/supplier-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-      <span class="buttonText">&nbsp;Add Supplier</span>
+      <span>&nbsp;Add Supplier</span>
     </button>
   </ng-container>
 </div>
