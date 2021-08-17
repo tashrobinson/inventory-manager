@@ -7,6 +7,7 @@ ng-sidebar-container{
   top: 10%;
   left: 20px;
   width: 200px;
+  margin-right:5px;
 }
 
 .btnNavSelected {
@@ -48,3 +49,32 @@ ng-sidebar-container{
   outline: 0 !important;
 }
 
+/* Mobile  */ 
+@media screen and (max-width: 600px) {
+  .mobileHide {
+    visibility: hidden;
+    width: 0px;
+  }
+
+  .mobileFontSize{
+    font-size: 25px;
+  }
+
+  .mobileTableSize{
+    width: 300px;
+  }
+
+} 
+
+/* Desktop */ 
+@media screen and (min-width: 600px) {
+
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  .desktopTableSize{
+    width: 100%;
+  }
+}

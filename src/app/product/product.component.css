@@ -59,25 +59,7 @@
   background-color: #db0a0a;
 }
 
-@media screen and (max-width: 600px) {
-  .mobileHide {
-    visibility: hidden;
-  }
 
-  .mobileFontSize{
-    font-size: 25px;
-  }
-
-} 
-
-@media screen and (min-width: 600px) {
-
-  .desktopTitleSize{
-    font-size: 4em;
-    font-weight: bolder;
-  }
-
-}
 .table__wrapper {
   overflow-x: auto;
   overflow: auto;
@@ -86,4 +68,55 @@
 
 .products {
   width: 100%;
+}
+
+/* Mobile  */ 
+@media screen and (max-width: 600px) {
+  .mobileHide { 
+    visibility: hidden;
+    width: 10px;
+  }
+
+  .mobileFontSize{
+    font-size: 25px;
+  }
+
+  .mobileTableSize{
+    width: 100%;
+    height: auto;
+  }
+
+  .centerTextMobile{
+    margin: auto;
+    width: 50%;
+  }
+  
+  .btnAddMobile{
+    background-color: #558fe5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+} 
+
+/* Desktop */ 
+@media screen and (min-width: 600px) {
+  .desktopHide{ 
+    visibility: hidden;
+    width: 10px;
+  }
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  .desktopTableSize{
+    width: 100%;
+  }
+  
 }

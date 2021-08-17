@@ -10,8 +10,8 @@
 
       <!-- A sidebar -->
       <ng-sidebar [(opened)]="_opened" mode="push" #sidebar>
-        <div class="nav">
-          <div><button [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
+        <div class="nav mobileHide">
+          <div><button  [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
                        (click)="navigate('/productlist')">Products</button></div>
           <div><button [ngClass]="current === '/supplierlist' ? 'btnNavSelected' : 'btnNav'"
                        (click)="navigate('/supplierlist')">Suppliers</button></div>
@@ -21,6 +21,7 @@
                        (click)="navigate('/userlist')">Users</button></div>
         </div>
       </ng-sidebar>
+
 
       <!-- Page content -->
       <div ng-sidebar-content>
