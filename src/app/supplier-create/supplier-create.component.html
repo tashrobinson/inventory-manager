@@ -22,12 +22,12 @@
         <br />
         <div class="form-group">
           <ng-container *ngIf="userIsAdmin">
-            <button type="submit" class="btnSave" [disabled]="!supplierForm.form.valid">
+            <button type="submit" class="btnCreateSave" [disabled]="!supplierForm.form.valid">
               <span class="fas fa-save"></span>
               &nbsp;Save
             </button>
           </ng-container>
-          <a [routerLink]="['/supplierlist']" class="btnCancel" >
+          <a [routerLink]="['/supplierlist']" class="btnCreateCancel" >
             <i class="fas fa-window-close"></i>
             &nbsp;Cancel
           </a>

@@ -36,25 +36,25 @@
   <div class="row">
     <div class="col-md-12">
       <ng-container *ngIf="userIsAdmin">
-        <a [routerLink]="['/shelf-edit', shelf._id]" class="btnEdit">
+        <a [routerLink]="['/shelf-edit', shelf._id]" class="btnDetailEdit">
           <i class="fas fa-pencil-alt"></i>
           &nbsp;Edit
         </a>
       </ng-container>
       <ng-container *ngIf="userIsAdmin">
         <button
-          class="btnDelete"
+          class="btnDetailDelete"
           mwlConfirmationPopover
           [popoverTitle]="popoverTitle"
           [popoverMessage]="popoverMessage"
-          placement="left"
+          placement="bottom"
           (confirm)="deleteShelf(shelf._id)"
           (cancel)="cancel()">
           <span class="fas fa-trash" aria-hidden="true"></span>
           &nbsp;Delete
         </button>
       </ng-container>
-      <a [routerLink]="['/shelflist']" class="btnCancel">
+      <a [routerLink]="['/shelflist']" class="btnDetailCancel">
         <i class="fas fa-arrow-left"></i>
         &nbsp;Back
       </a>

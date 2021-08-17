@@ -10,7 +10,7 @@
         <div class="table__wrapper">
           <table class="table is-bordered is-striped is-fullwidth has-background-info-light mt-3">
             <thead>
-            <tr>
+            <tr id="header-row">
               <th>ID</th>
               <th>Product ID</th>
               <th>Location</th>
@@ -28,7 +28,7 @@
               <td>
                 <a [routerLink]="['/shelf-details', shelf._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
-                  <span class="buttonText">&nbsp;Show Detail</span>
+                  <span class="buttonText">&nbsp;View</span>
                 </a>
                 <ng-container *ngIf="userIsAdmin">
                   <a [routerLink]="['/shelf-edit', shelf._id]" class="btnEdit">
@@ -42,7 +42,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="left"
+                    placement="bottom"
                     (confirm)="deleteShelf(shelf._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>

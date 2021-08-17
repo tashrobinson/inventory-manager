@@ -37,12 +37,12 @@
         <br />
         <div class="form-group">
           <ng-container *ngIf="userIsAdmin">
-            <button type="submit" class="btnSave" [disabled]="!shelfForm.form.valid">
+            <button type="submit" class="btnCreateSave" [disabled]="!shelfForm.form.valid">
               <span class="fas fa-save"></span>
               &nbsp;Save
             </button>
           </ng-container>
-          <a [routerLink]="['/shelflist']" class="btnCancel" >
+          <a [routerLink]="['/shelflist']" class="btnCreateCancel" >
             <i class="fas fa-window-close"></i>
             &nbsp;Cancel
           </a>

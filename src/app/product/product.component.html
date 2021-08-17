@@ -20,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr [routerLink]="['/product-details', product._id]" *ngFor="let product of products
+            <tr *ngFor="let product of products
               | wildcardSearchFilterPipe:['id','supplierId','name','part']:searchText">
               <td>{{ product.id }}</td>
               <td>{{ product.supplierId }}</td>
@@ -29,11 +29,11 @@
               <td>{{ product.price | currency }}</td>
               <td>{{ product.qty }}</td>
 
-              <td> <!-- TD Action Buttons hidden on mobile-->
+              <td>
                 <!-- detail btn --> 
                 <a [routerLink]="['/product-details', product._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
-                  <span class="buttonText">&nbsp;Show Detail</span>
+                  <span class="buttonText">&nbsp;View</span>
                 </a>
                 <ng-container *ngIf="userIsAdmin">
                  <!-- edit btn --> 
@@ -49,7 +49,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="left"
+                    placement="bottom"
                     (confirm)="deleteProduct(product._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>

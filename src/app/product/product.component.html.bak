@@ -28,7 +28,7 @@
       <td>{{ product.price | currency }}</td>
       <td>{{ product.qty }}</td>
       <td>
-        <a [routerLink]="['/product-details', product._id]" class="btn btn-info">Show Detail</a>
+        <a [routerLink]="['/product-details', product._id]" class="btn btn-info">View</a>
         <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a></ng-container>
         <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-details/delete', product._id]" class="btn btn-danger">Delete</a></ng-container>
       </td>

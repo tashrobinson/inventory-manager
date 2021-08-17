@@ -25,7 +25,7 @@
               <td>
                 <a [routerLink]="['/user-details', user._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
-                  <span class="buttonText">&nbsp;Show Detail</span>
+                  <span class="buttonText">&nbsp;View</span>
                 </a>
                 <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)">
                   <a [routerLink]="['/user-edit', user._id]" class="btnEdit">
@@ -38,7 +38,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="left"
+                    placement="bottom"
                     (confirm)="deleteUser(user._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>

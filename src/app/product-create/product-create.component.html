@@ -38,12 +38,12 @@
         <br />
         <div class="form-group">
           <ng-container *ngIf="userIsAdmin">
-            <button type="submit" class="btnSave" [disabled]="!productForm.form.valid">
+            <button type="submit" class="btnCreateSave" [disabled]="!productForm.form.valid">
               <span class="fas fa-save"></span>
               &nbsp;Save
             </button>
           </ng-container>
-          <a [routerLink]="['/productlist']" class="btnCancel" >
+          <a [routerLink]="['/productlist']" class="btnCreateCancel" >
             <i class="fas fa-window-close"></i>
             &nbsp;Cancel
           </a>
