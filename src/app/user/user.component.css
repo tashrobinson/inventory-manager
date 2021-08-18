@@ -190,7 +190,85 @@
 }
 
 /* Desktop */
-@media screen and (min-width: 850px) {
+@media screen and (max-width:1075px) and (min-width: 850px) {
+  .desktopHide{
+    visibility: hidden;
+    width: 10px;
+  }
+  .desktopTitleSize{
+    font-size: 4em;
+    font-weight: bolder;
+  }
+
+  .desktopTableSize{
+    width: 100%;
+  }
+
+  th, td {
+    font-size: 16px;
+  }
+
+  .btnEdit {
+    background-color: #00e64d;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDetail {
+    background-color: #6F8BAB;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnDelete {
+    background-color: #f52424;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 15px;
+    cursor: pointer;
+    margin: 5px;
+    float: left;
+  }
+
+  .btnAdd {
+    background-color: #558fe5;
+    border: none;
+    color: white;
+    padding: 8px 10px;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+  }
+
+  .buttonText {
+    display: none;
+  }
+
+  .table__wrapper {
+    overflow-x: auto;
+    overflow: auto;
+    max-height: 500px;
+  }
+
+  .actionCol{
+    min-width: 85px;
+  }
+}
+
+/* Desktop */
+@media screen and (min-width: 1075px) {
   .desktopHide{
     visibility: hidden;
     width: 10px;
