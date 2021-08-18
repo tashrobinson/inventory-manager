@@ -14,7 +14,7 @@
               <th>Username</th>
               <th>Email</th>
               <th>Is Admin?</th>
-              <th class="mobileHide">Action</th>
+              <th class="actionCol mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
               <td>{{ user.username }}</td>
               <td>{{ user.email }}</td>
               <td>{{ user.isAdmin }}</td>
-              <td>
+              <td class="actionCol">
                 <a [routerLink]="['/user-details', user._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
                   <span class="buttonText">&nbsp;View</span>
@@ -38,7 +38,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="bottom"
+                    placement="left"
                     (confirm)="deleteUser(user._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>

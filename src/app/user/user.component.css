@@ -105,13 +105,18 @@
     max-width: 500px;
   }
 
+  .actionCol{
+    min-width: 40px;
+  }
 }
 
 @media screen and (max-width:850px) and (min-width:600px) {
+
   .desktopHide{
     visibility: hidden;
     width: 10px;
   }
+
   .desktopTitleSize{
     font-size: 4em;
     font-weight: bolder;
@@ -177,6 +182,10 @@
     overflow-x: auto;
     overflow: auto;
     max-height: 500px;
+  }
+
+  .actionCol{
+    min-width: 40px;
   }
 }
 
@@ -253,4 +262,7 @@
     max-height: 500px;
   }
 
+  .actionCol{
+    min-width: 75px;
+  }
 }

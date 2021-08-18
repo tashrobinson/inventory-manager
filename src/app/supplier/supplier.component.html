@@ -14,7 +14,7 @@
             <tr>
               <th>ID</th>
               <th>Name</th>
-              <th class="mobileHide">Action</th>
+              <th class="actionCol mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -22,7 +22,7 @@
               | wildcardSearchFilterPipe:['id','name']:searchtext">
               <td>{{ supplier.id }}</td>
               <td>{{ supplier.name }}</td>
-              <td>
+              <td class="actionCol">
                 <a [routerLink]="['/supplier-details', supplier._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
                   <span class="buttonText">&nbsp;View</span>
@@ -39,7 +39,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="bottom"
+                    placement="left"
                     (confirm)="deleteSupplier(supplier._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>

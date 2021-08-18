@@ -105,6 +105,10 @@
     max-width: 500px;
   }
 
+  .actionCol{
+    min-width: 40px;
+  }
+
 }
 
 @media screen and (max-width:850px) and (min-width:600px) {
@@ -178,6 +182,11 @@
     overflow: auto;
     max-height: 500px;
   }
+
+  .actionCol{
+    min-width: 40px;
+  }
+
 }
 
 /* Desktop */
@@ -253,5 +262,8 @@
     max-height: 500px;
   }
 
+  .actionCol{
+    min-width: 75px;
+  }
 }
 

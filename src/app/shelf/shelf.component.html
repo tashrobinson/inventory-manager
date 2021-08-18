@@ -15,7 +15,7 @@
               <th>Product ID</th>
               <th>Location</th>
               <th>Status</th>
-              <th class="mobileHide">Action</th>
+              <th class="actionCol mobileHide">Action</th>
             </tr>
             </thead>
             <tbody>
@@ -25,7 +25,7 @@
               <td>{{ shelf.productId }}</td>
               <td>{{ shelf.location }}</td>
               <td>{{ shelf.status }}</td>
-              <td>
+              <td class="actionCol">
                 <a [routerLink]="['/shelf-details', shelf._id]" class="btnDetail">
                   <i class="fas fa-eye"></i>
                   <span class="buttonText">&nbsp;View</span>
@@ -42,7 +42,7 @@
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
-                    placement="bottom"
+                    placement="left"
                     (confirm)="deleteShelf(shelf._id)"
                     (cancel)="cancel()">
                     <span class="fas fa-trash" aria-hidden="true"></span>
