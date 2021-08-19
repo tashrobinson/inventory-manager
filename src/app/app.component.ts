@@ -42,7 +42,7 @@ export class AppComponent implements OnInit{
   }
 
   configureSideNav() {
-    this.smallScreen = window.innerWidth < 840 ? true : false
+    this.smallScreen = window.innerWidth < 850 ? true : false
     this._opened = !this.smallScreen;
   }
 
@@ -77,10 +77,5 @@ export class AppComponent implements OnInit{
     this.current = "/";
     this.ref.detectChanges();
   }
-
-  //onOutletLoaded(component) {
-  //  console.log("setting " + component + "user: " + this.user.username +  " userIsAdmin = " + this.user.userIsAdmin);
-  //  component.userIsAdmin = this.user.isAdmin;
-  //}
 
 }

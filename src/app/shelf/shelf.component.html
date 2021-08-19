@@ -4,6 +4,11 @@
   <h1 class="title is-italic has-text-black">Shelf List</h1>
   <input type="text" class="form-control" [(ngModel)]="searchtext"
          placeholder="Search">
+<!-- mobile info box-->
+  <p class="infoP desktopHide">
+    <i class="fas fa-info-circle desktopHide infoIcon"></i>
+    Click a table row to view details
+  </p>
   <div class="panel">
     <div class="panel-block">
       <div class="shelves">
@@ -21,24 +26,24 @@
             <tbody>
             <tr *ngFor="let shelf of shelves
               | wildcardSearchFilterPipe:['id','productId','location','status']:searchtext">
-              <td>{{ shelf.id }}</td>
-              <td>{{ shelf.productId }}</td>
-              <td>{{ shelf.location }}</td>
-              <td>{{ shelf.status }}</td>
-              <td class="actionCol">
-                <a [routerLink]="['/shelf-details', shelf._id]" class="btnDetail">
+              <td [routerLink]="['/shelf-details', shelf._id]" >{{ shelf.id }}</td>
+              <td [routerLink]="['/shelf-details', shelf._id]" >{{ shelf.productId }}</td>
+              <td [routerLink]="['/shelf-details', shelf._id]" >{{ shelf.location }}</td>
+              <td [routerLink]="['/shelf-details', shelf._id]" >{{ shelf.status }}</td>
+              <td class="actionCol mobileHide">
+                <a [routerLink]="['/shelf-details', shelf._id]" class="btnDetail mobileHide">
                   <i class="fas fa-eye"></i>
                   <span class="buttonText">&nbsp;View</span>
                 </a>
                 <ng-container *ngIf="userIsAdmin">
-                  <a [routerLink]="['/shelf-edit', shelf._id]" class="btnEdit">
+                  <a [routerLink]="['/shelf-edit', shelf._id]" class="btnEdit mobileHide">
                     <i class="fas fa-pencil-alt"></i>
                     <span class="buttonText">&nbsp;Edit</span>
                   </a>
                 </ng-container>
                 <ng-container *ngIf="userIsAdmin">
                   <button
-                    class="btnDelete"
+                    class="btnDelete mobileHide"
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"

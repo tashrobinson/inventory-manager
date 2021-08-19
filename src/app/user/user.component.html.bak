@@ -1,33 +1,64 @@
 <div class="container">
   <!--<app-nav-bar></app-nav-bar>-->
-  <h1>User List
-    <a [routerLink]="['/user-create']" class="btn btn-light btn-lg">
-      <span class="fas fa-plus" aria-hidden="true"></span>
-    </a>
-  </h1>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <h1 class="title is-italic has-text-black">User List </h1>
   <input type="text" class="form-control" [(ngModel)]="searchtext"
          placeholder="Search">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>Username</th>
-      <th>Email</th>
-      <th>Is Admin?</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users | filter:searchtext">
-      <td>{{ user.username }}</td>
-      <td>{{ user.email }}</td>
-      <td>{{ user.isAdmin }}</td>
-      <td>
-        <a [routerLink]="['/user-details', user._id]" class="btn btn-info">View</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-edit', user._id]" class="btn btn-success">Edit</a></ng-container>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/user-details/delete', user._id]" class="btn btn-danger">Delete</a></ng-container>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="panel">
+    <div class="panel-block">
+      <div class="users">
+        <div class="table__wrapper">
+          <table class="table is-bordered is-striped is-fullwidth has-background-info-light mt-3">
+            <thead>
+            <tr>
+              <th>Username</th>
+              <th>Email</th>
+              <th>Is Admin?</th>
+              <th class="actionCol mobileHide">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let user of users | wildcardSearchFilterPipe:['username', 'email']:searchtext">
+              <td>{{ user.username }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.isAdmin }}</td>
+              <td class="actionCol">
+                <a [routerLink]="['/user-details', user._id]" class="btnDetail">
+                  <i class="fas fa-eye"></i>
+                  <span class="buttonText">&nbsp;View</span>
+                </a>
+                <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)">
+                  <a [routerLink]="['/user-edit', user._id]" class="btnEdit">
+                    <i class="fas fa-pencil-alt"></i>
+                    <span class="buttonText">&nbsp;Edit</span>
+                  </a>
+                </ng-container>
+                <ng-container *ngIf="userIsAdmin || checkCurrentUser(user._id)">
+                  <button class="btnDelete"
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="deleteUser(user._id)"
+                    (cancel)="cancel()">
+                    <span class="fas fa-trash" aria-hidden="true"></span>
+                    <span class="buttonText">&nbsp;Delete</span>
+                  </button>
+                </ng-container>
+            </tr>
+            </tbody>
+          </table>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <!-- Add Button -->
+  <ng-container *ngIf="userIsAdmin">
+    <button [routerLink]="['/user-create']" class="btnAdd">
+      <span class="fas fa-plus" aria-hidden="true"></span>
+      <span>&nbsp;Add User</span>
+    </button>
+  </ng-container>
 </div>
 

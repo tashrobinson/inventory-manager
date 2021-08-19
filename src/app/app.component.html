@@ -31,17 +31,8 @@
       </ng-sidebar-container>
     </ng-template>
     <ng-template #topNav>
-      <!-- stacked nav at top -->
-      <div class="mobileNav">
-        <div><button [ngClass]="current === '/productlist' ? 'btnNavSelected' : 'btnNav'"
-                      (click)="navigate('/productlist')">Products</button></div>
-        <div><button [ngClass]="current === '/supplierlist' ? 'btnNavSelected' : 'btnNav'"
-                     (click)="navigate('/supplierlist')">Suppliers</button></div>
-        <div><button [ngClass]="current === '/shelflist' ? 'btnNavSelected' : 'btnNav'"
-                     (click)="navigate('/shelflist')">Shelves</button></div>
-        <div><button [ngClass]="current === '/userlist' ? 'btnNavSelected' : 'btnNav'"
-                     (click)="navigate('/userlist')">Users</button></div>
-      </div>
+      <!-- mobile nav at top -->
+      <app-mobilenav></app-mobilenav>
       <!-- page content -->
       <router-outlet></router-outlet>
     </ng-template>

@@ -33,6 +33,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { GravatarDirective } from './directives/gravatar.directive';
 import { ConfirmationPopoverModule } from "angular-confirmation-popover";
 import { WildcardSearchFilterPipePipe } from './pipes/wildcard-search-filter-pipe.pipe';
+import { MobilenavComponent } from './mobilenav/mobilenav.component';
 
 const appRoutes: Routes = [
   {
@@ -174,6 +175,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     GravatarDirective,
     WildcardSearchFilterPipePipe,
+    MobilenavComponent,
   ],
   imports: [
     BrowserModule,

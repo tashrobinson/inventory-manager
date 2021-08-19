@@ -1,7 +1,13 @@
 <div class="container">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
   <h1 class="title is-italic has-text-black">Product List </h1>
   <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+
+  <p class="infoP desktopHide">
+    <i class="fas fa-info-circle desktopHide infoIcon"></i>
+    Click a table row to view details
+  </p>
 
   <div class="panel desktopTableSize mobileTableSize">
     <div class="panel-block">
@@ -11,41 +17,41 @@
             <thead>
             <tr id="header-row">
               <th>ID</th>
-              <th>Supplier ID</th>
+              <th class="mobileHide">Supplier ID</th>
               <th>Name</th>
-              <th>Part</th>
+              <th class="mobileHide">Part</th>
               <th>Price</th>
               <th>Quantity</th>
-              <th class="actionCol mobileHide">Action</th>
+              <th class="mobileHide actionCol">Action</th>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let product of products
               | wildcardSearchFilterPipe:['id','supplierId','name','part']:searchText">
-              <td>{{ product.id }}</td>
-              <td>{{ product.supplierId }}</td>
-              <td>{{ product.name }}</td>
-              <td>{{ product.part }}</td>
-              <td>{{ product.price | currency }}</td>
-              <td>{{ product.qty }}</td>
+              <td [routerLink]="['/product-details', product._id]" >{{ product.id }}</td>
+              <td class="mobileHide" >{{ product.supplierId }}</td>
+              <td [routerLink]="['/product-details', product._id]" >{{ product.name }}</td>
+              <td class="mobileHide">{{ product.part }}</td>
+              <td [routerLink]="['/product-details', product._id]">{{ product.price | currency }}</td>
+              <td [routerLink]="['/product-details', product._id]">{{ product.qty }}</td>
 
-              <td class="actionCol">
+              <td class="mobileHide actionCol"> <!-- TD Action Buttons hidden on mobile-->
                 <!-- detail btn --> 
-                <a [routerLink]="['/product-details', product._id]" class="btnDetail">
+                <a [routerLink]="['/product-details', product._id]" class="btnDetail mobileHide">
                   <i class="fas fa-eye"></i>
                   <span class="buttonText">&nbsp;View</span>
                 </a>
+                <!-- edit btn -->
                 <ng-container *ngIf="userIsAdmin">
-                 <!-- edit btn --> 
-                  <a [routerLink]="['/product-edit', product._id]" class="btnEdit">
+                  <a [routerLink]="['/product-edit', product._id]" class="btnEdit mobileHide">
                     <i class="fas fa-pencil-alt"></i>
                     <span class="buttonText">&nbsp;Edit</span>
                   </a>
                 </ng-container>
+                <!-- delete btn -->
                 <ng-container *ngIf="userIsAdmin">
-                  <!-- delete btn --> 
-                  <button 
-                    class="btnDelete"
+                  <button
+                    class="btnDelete mobileHide"
                     mwlConfirmationPopover
                     [popoverTitle]="popoverTitle"
                     [popoverMessage]="popoverMessage"
@@ -56,6 +62,7 @@
                     <span class="buttonText ">&nbsp;Delete</span>
                   </button>
                 </ng-container>
+       
               </td>
             </tr>
             </tbody>

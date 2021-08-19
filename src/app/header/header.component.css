@@ -30,9 +30,15 @@
 }
 
 
-@media screen and (max-width: 350px) {
+@media screen and (max-width: 349px) {
+
   .mobileHide {
     visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    font-size: 0px;
+    margin: 0px;
   }
 
   .right {
@@ -59,9 +65,15 @@
 }
 
 
-@media screen and (max-width: 600px) and (min-width:350px){
+@media screen and (max-width: 599px) and (min-width:350px){
+
   .mobileHide {
     visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    font-size: 0px;
+    margin: 0px;
   }
 
   .right {
@@ -86,7 +98,7 @@
   }
 }
 
-@media screen and (max-width:850px) and (min-width:600px) {
+@media screen and (max-width: 849px) and (min-width: 600px) {
 
   .right {
     width: 25%;

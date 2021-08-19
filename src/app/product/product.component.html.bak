@@ -1,39 +1,77 @@
 <div class="container">
-  <!--<app-nav-bar></app-nav-bar>-->
-  <h1>Product List
-    <a [routerLink]="['/product-create']" class="btn btn-light btn-lg">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+  <h1 class="title is-italic has-text-black">Product List </h1>
+  <input type="text" class="form-control" [(ngModel)]="searchText" placeholder="Search">
+
+  <div class="panel desktopTableSize mobileTableSize">
+    <div class="panel-block">
+      <div class="products">
+        <div class="table__wrapper">
+          <table class="table is-bordered is-striped has-background-info-light mt-3">
+            <thead>
+            <tr id="header-row">
+              <th>ID</th>
+              <th class="mobileHide">Supplier ID</th>
+              <th>Name</th>
+              <th class="mobileHide">Part</th>
+              <th>Price</th>
+              <th>Quantity</th>
+              <th class="mobileHide">Action</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let product of products
+              | wildcardSearchFilterPipe:['id','supplierId','name','part']:searchText">
+               <!-- get rid of route link add class hide on TH and TD change title size-->
+              <td [routerLink]="['/product-details', product._id]" >{{ product.id }}</td>
+              <td class="mobileHide" >{{ product.supplierId }}</td>
+              <td [routerLink]="['/product-details', product._id]" >{{ product.name }}</td>
+              <td class="mobileHide">{{ product.part }}</td>
+              <td [routerLink]="['/product-details', product._id]">{{ product.price | currency }}</td>
+              <td [routerLink]="['/product-details', product._id]">{{ product.qty }}</td>
+
+              <td class="mobileHide"> <!-- TD Action Buttons hidden on mobile-->
+                <!-- detail btn --> 
+                <a [routerLink]="['/product-details', product._id]" class="btnDetail mobileHide">
+                  <i class="fas fa-eye"></i>
+                  <span class="buttonText">&nbsp;View</span>
+                </a>
+                <ng-container *ngIf="userIsAdmin">
+                  <a [routerLink]="['/product-edit', product._id]" class="btnEdit mobileHide">
+                    <i class="fas fa-pencil-alt"></i>
+                    <span class="buttonText">&nbsp;Edit</span>
+                  </a>
+                </ng-container>
+                <ng-container *ngIf="userIsAdmin">
+                  <!-- delete btn --> 
+                  <button 
+                    class="btnDelete mobileHide"
+                    mwlConfirmationPopover
+                    [popoverTitle]="popoverTitle"
+                    [popoverMessage]="popoverMessage"
+                    placement="left"
+                    (confirm)="deleteProduct(product._id)"
+                    (cancel)="cancel()">
+                    <span class="fas fa-trash" aria-hidden="true"></span>
+                    <span class="buttonText ">&nbsp;Delete</span>
+                  </button>
+                </ng-container>
+       
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <ng-container *ngIf="userIsAdmin">
+    <button [routerLink]="['/product-create']" class="btnAdd">
       <span class="fas fa-plus" aria-hidden="true"></span>
-    </a>
-  </h1>
-  <input type="text" class="form-control" [(ngModel)]="searchText"
-         placeholder="Search">
-  <table class="table">
-    <thead>
-    <tr>
-      <th>ID</th>
-      <th>Supplier ID</th>
-      <th>Name</th>
-      <th>Part</th>
-      <th>Price</th>
-      <th>Quantity</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let product of products | filter:searchText">
-      <td>{{ product.id }}</td>
-      <td>{{ product.supplierId }}</td>
-      <td>{{ product.name }}</td>
-      <td>{{ product.part }}</td>
-      <td>{{ product.price | currency }}</td>
-      <td>{{ product.qty }}</td>
-      <td>
-        <a [routerLink]="['/product-details', product._id]" class="btn btn-info">View</a>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-edit', product._id]" class="btn btn-success">Edit</a></ng-container>
-        <ng-container *ngIf="userIsAdmin"><a [routerLink]="['/product-details/delete', product._id]" class="btn btn-danger">Delete</a></ng-container>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+      <span>&nbsp;Add Product</span>
+    </button>
+  </ng-container>
+
 </div>
 

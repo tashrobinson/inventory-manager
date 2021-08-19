@@ -9,14 +9,6 @@ ng-sidebar-container{
   width: 200px;
   margin-right:5px;
 }
-
-.mobileNav{
-  position: relative;
-  left: 50%;
-  width: 200px;
-  margin-left: -100px;
-}
-
 .btnNavSelected {
   background-color: #558fe5;
   border: none;
@@ -57,10 +49,15 @@ ng-sidebar-container{
 }
 
 /* Mobile  */ 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 849px) {
+
   .mobileHide {
     visibility: hidden;
     width: 0px;
+    height: 0px;
+    padding: 0px;
+    font-size: 0px;
+    margin: 0px;
   }
 
   .mobileFontSize{
@@ -70,12 +67,20 @@ ng-sidebar-container{
   .mobileTableSize{
     width: 300px;
   }
-
 }
 
 
 /* Desktop */ 
-@media screen and (min-width: 600px) {
+@media screen and (min-width: 850px) {
+
+  .desktopHide {
+    visibility: hidden;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    font-size: 0px;
+    margin: 0px;
+  }
 
   .desktopTitleSize{
     font-size: 4em;

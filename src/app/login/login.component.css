@@ -13,47 +13,58 @@ input[type=text], input[type=password] {
   box-sizing: border-box;
 }
 
-/* Set a style for all buttons */
-button {
+
+.btnLogin {
+  background-color: #558fe5;
+  border: none;
   color: white;
   padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
+  font-size: 16px;
   cursor: pointer;
+  margin: 8px 0;
   width: 100%;
+  display: inline-block;
+  text-align: center;
 }
 
-.btn-outline-primary {
-  color: #0d6efd;
+.btnRegister {
   background-color: transparent;
   background-image: none;
-  border-color: #0d6efd
-}
-
-.btn-outline-primary:hover {
-  color: white;
-  background-image: linear-gradient(180deg,#337ab7 0,#265a87);
-  border-color: #0d6efd
-}
-
-.btn-outline-primary:focus,
-.btn-outline-primary.focus {
-  box-shadow: 0 0 0 .2rem rgba(119, 204, 204, 0.5)
-}
-
-
-
-a {
+  border: 1px solid #558fe5;
   padding: 14px 20px;
-  margin: 8px 0;
+  font-size: 16px;
   cursor: pointer;
+  margin: 8px 0;
   width: 100%;
+  display: inline-block;
+  text-align: center;
+}
+
+.btnRegister:hover {
+  color: white;
+  background-color: #558fe5;
+}
+
+.btnRegister:focus,
+.btnRegister.focus {
+  box-shadow: 0 0 0 .2rem rgba(119, 204, 204, 0.5)
 }
 
 /* Add a hover effect for buttons */
 button:hover {
   opacity: 0.8;
 }
+
+a:link { text-decoration: none; }
+
+
+a:visited { text-decoration: none; }
+
+
+a:hover { text-decoration: none; }
+
+
+a:active { text-decoration: none; }
 
 .middle {
   text-align: center;

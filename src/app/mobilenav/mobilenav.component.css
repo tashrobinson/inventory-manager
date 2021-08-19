@@ -1,0 +1,12 @@
+/* Mobile Nav  */
+.navArrowLeft{
+    float: left;
+    width: 20px;
+    height: auto;
+}
+
+.navArrowRight{
+    float: right;
+    width: 20px;
+    height: auto;
+}
