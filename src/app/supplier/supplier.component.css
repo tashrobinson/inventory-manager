@@ -114,7 +114,6 @@
   }
 
   .table__wrapper {
-    max-height: 500px;
     max-width: 500px;
   }
 
@@ -205,7 +204,6 @@
 
   .table__wrapper {
     max-width: 750px;
-    max-height: 500px;
   }
 
   .table {
